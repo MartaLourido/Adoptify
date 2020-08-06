@@ -27,7 +27,15 @@ upload my profile picture
 see the pets profiles
 delete profile
 edit profile
-Geo Location:
+
+Shelter profile:
+
+see my profile
+upload my profile picture
+add a pet
+find pets
+delete information
+edit information
 
 ...
 ROUTES:
