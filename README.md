@@ -4,12 +4,12 @@ In Adoptify, we want to promote the adoption throughout Europe of abandoned dogs
 
 ## User Stories
 
- *Homepage* - As a user I want to be able to access the homepage so that I see what the app is about and login and signup 404 - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault sign up as an adoptant - As a adoptant I want to sign up on the webpage for be able to see the pet profiles. 
-*Sign up as shelter* - As a shelter I want to sign up on the webpage so that I can create a profile and add the pets of my shelter. login - As a user I want to be able to log in on the webpage so that I can get back to my account logout.
-*As a user* - I want to be able to log out from the webpage so that I can make sure no one will access my account adoptant-profile.
-*As a user* - I want to check my profile information and be able to edit it, see the pets for adopt one. Also, to go back to the home page if I don't want to see the profile anymore. 
-*As a user* - I want to check my profile information and be able to edit it, and add more pets. Also, to go back to the home page if I don't want to see the profile anymore. *Pet-profile* - As a user I want to check the pet profile to decide if i want adopt one pet. Also, to go back to the home page if I don't want to see the profile anymore. 
-*Pet-create* - As a shelter I want to create a pet profile so that I can add more pets.
+ - *Homepage* - As a user I want to be able to access the homepage so that I see what the app is about and login and signup 404 - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault sign up as an adoptant - As a adoptant I want to sign up on the webpage for be able to see the pet profiles. 
+- *Sign up as shelter* - As a shelter I want to sign up on the webpage so that I can create a profile and add the pets of my shelter. login - As a user I want to be able to log in on the webpage so that I can get back to my account logout.
+- *As a user* - I want to be able to log out from the webpage so that I can make sure no one will access my account adoptant-profile.
+- *As a user* - I want to check my profile information and be able to edit it, see the pets for adopt one. Also, to go back to the home page if I don't want to see the profile anymore. 
+- *As a user* - I want to check my profile information and be able to edit it, and add more pets. Also, to go back to the home page if I don't want to see the profile anymore. - - *Pet-profile* - As a user I want to check the pet profile to decide if i want adopt one pet. Also, to go back to the home page if I don't want to see the profile anymore. 
+- *Pet-create* - As a shelter I want to create a pet profile so that I can add more pets.
 
 ## List of other features outside of the MVPs scope
 
@@ -26,42 +26,42 @@ In Adoptify, we want to promote the adoption throughout Europe of abandoned dogs
 
 GET /
 
-renders the homepage renders login.hbs
+Renders the homepage renders login.hbs
 
 GET /auth/signup 
 
-redirects to / if user logged in renders signup-shelter.hbs 
+Redirects to / if user logged in renders signup-shelter.hbs 
              / signs in body: email password name
              /POST /auth/profile-shelter
-redirects to / if user logged in renders signup-adopter.hbs 
+Redirects to / if user logged in renders signup-adopter.hbs 
              / signs in body: email password name
              /POST /auth/profile-adopter         
 
-redirects to / if user logged in body: email password / POST /auth/:id-profile
+Redirects to / if user logged in body: email password / POST /auth/:id-profile
 
-body: (empty) GET /
+Body: (empty) GET /
 
-renders profile-adopter (the profile preview + edit form) POST /profile-adopter (edit action)
-renders profile-adopter (the profile preview + delete form) POST /home (logout+delete action)
+Renders profile-adopter (the profile preview + edit form) POST /profile-adopter (edit action)
+Renders profile-adopter (the profile preview + delete form) POST /home (logout+delete action)
 
-renders profile-shelter (the profile preview + edit form) POST /profile-shelter (edit action)
-renders profile-shelter (the profile preview + delete form) POST /home (logout+delete action)
-redirects to / if user press button add pet in renders profile-shelter.hbs 
+Renders profile-shelter (the profile preview + edit form) POST /profile-shelter (edit action)
+Renders profile-shelter (the profile preview + delete form) POST /home (logout+delete action)
+Redirects to / if user press button add pet in renders profile-shelter.hbs 
              / signs in body: name breed size
              / POST /profile-dog         
 
-body: button find pet in renders profile-shelter 
+Body: button find pet in renders profile-shelter 
 GET /find-dog
-renders find-dog.hbs includes the list of dogs redirects to / if user presses button GET /dog/:id
-renders find-dog.hbs redirects to /filtered-find-dog if user presses button POST /filter-dog
+Renders find-dog.hbs includes the list of dogs redirects to / if user presses button GET /dog/:id
+Renders find-dog.hbs redirects to /filtered-find-dog if user presses button POST /filter-dog
 
-body: button find pet in renders profile-adopter 
+Body: button find pet in renders profile-adopter 
 GET /find-dog
-renders find-dog.hbs includes the list of dogs redirects to / if user presses button GET /dog/:id
-renders find-dog.hbs redirects to /filtered-find-dog if user presses button POST /filter-dog
+Renders find-dog.hbs includes the list of dogs redirects to / if user presses button GET /dog/:id
+Renders find-dog.hbs redirects to /filtered-find-dog if user presses button POST /filter-dog
 
-body: button go back t in renders profile-dog GET /find-dog
-renders find-dog.hbs includes the list of dogs 
+Body: button go back t in renders profile-dog GET /find-dog
+Renders find-dog.hbs includes the list of dogs 
 
 
 # Models
