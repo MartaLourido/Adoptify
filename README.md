@@ -20,19 +20,14 @@ pet-create - As a shelter I want to create a pet profile so that I can add more 
 
 List of other features outside of the MVPs scope
 
-User profile:
+Adopter profile:
 
 see my profile
 upload my profile picture
-see other users profile
-list of events created by the user
-list events the user is attending
+see the pets profiles
+delete profile
+edit profile
 Geo Location:
-
-add geolocation to events when creating
-show event in a map in event detail page
-show all events in a map in the event list page
-Homepage
 
 ...
 ROUTES:
