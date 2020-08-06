@@ -78,31 +78,27 @@ Renders find-dog.hbs includes the list of dogs
 - About me: String 
 - Pets: Boolean 
 - Photos: String 
-- Do you want to be a volunteer?: Boolean 
+- Volunteer: Boolean 
 - Other: String
 
  *Shelter model*
 - Username: String 
 - Email: String 
-- Password: String 
+- Password: String
 - Phone: Number
 - Location: enum
 - Address: String
 - About us: String
 - Contact person: String
-- Pets: String
 - Photos: String
-- Adopters = [
-   dogId: ref
-   adopterId: ref
-]
+- Adopters = [dogId: ref, adopterId: ref]
 
 
  *Pet model*
 - Shelter: ObjectId<Shelter>
 - Name: String
 - Description: String
-- Date: Date
+- Age: Number
 - Weight: Number
 - Breed: enum
 - Good with kids: Boolean
