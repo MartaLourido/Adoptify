@@ -69,19 +69,50 @@ Renders find-dog.hbs includes the list of dogs
 
 # Models
 
-*Adoptant model*
-Username: String Password: String Name: String Email: String Location: enum About me: String Pets: Boolean Photos: String Do you want to be a volunteer?: Boolean Other: String
+ *Adoptant model*
+- Username: String 
+- Password: String 
+- Name: String 
+- Email: String 
+- Location: enum 
+- About me: String 
+- Pets: Boolean 
+- Photos: String -
+ Do you want to be a volunteer?: Boolean 
+ - Other: String
 
-*Shelter model*
-Username: String Email: String Password: String Location: enum Address: String About us: String Contact person: String Pets: String Photos: String
+ *Shelter model*
+- Username: String 
+- Email: String Password: String Location: enum Address: String About us: String Contact person: String Pets: String Photos: String 
+- Phone: Number
+- Location: enum
+- Address: String
+- About us: String
+- Contact person: String
+- Pets: String
+- Photos: String
+- Adopters = [
+   dogId: ref
+   adopterId: ref
+]
 
-*Pet model*
-Shelter: ObjectId Name: String Description: String Date: Date Weight: Number Breed: enum Good with kids: Boolean Good with other animals: Boolean Photos: String Others: String
+
+ *Pet model*
+- Shelter: ObjectId<Shelter>
+- Name: String
+- Description: String
+- Date: Date
+- Weight: Number
+- Breed: enum
+- Good with kids: Boolean
+- Good with other animals: Boolean
+- Photos: String
+- Others: String
 
 
 # Trello
 
-Link to your trello board or picture of your physical board https://trello.com/b/RNCl1E64/simple-project-board
+Link to your trello board or picture of your physical board https://trello.com/b/RNCl1E64/adoptify-friends-for-life
 
 
 # Git
