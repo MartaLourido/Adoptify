@@ -77,9 +77,9 @@ Renders find-dog.hbs includes the list of dogs
 - Location: enum 
 - About me: String 
 - Pets: Boolean 
-- Photos: String -
- Do you want to be a volunteer?: Boolean 
- - Other: String
+- Photos: String 
+- Do you want to be a volunteer?: Boolean 
+- Other: String
 
  *Shelter model*
 - Username: String 
