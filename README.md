@@ -29,7 +29,7 @@ redirects to / if user logged in renders signup-adopter.hbs
              / signs in body: email password name
              /POST /auth/profile-adopter         
 
-redirects to / if user logged in body: email password // POST /auth/logout
+redirects to / if user logged in body: email password / POST /auth/:id-profile
 
 body: (empty) GET /
 
@@ -38,28 +38,23 @@ renders profile-adopter (the profile preview + delete form) POST /home (logout+d
 
 renders profile-shelter (the profile preview + edit form) POST /profile-shelter (edit action)
 renders profile-shelter (the profile preview + delete form) POST /home (logout+delete action)
+redirects to / if user press button add pet in renders profile-shelter.hbs 
+             / signs in body: name breed size
+             / POST /profile-dog         
 
-body: button find pet GET /find-dog
+body: button find pet in renders profile-shelter 
+GET /find-dog
+renders find-dog.hbs includes the list of dogs redirects to / if user presses button GET /dog/:id
+renders find-dog.hbs redirects to /filtered-find-dog if user presses button POST /filter-dog
 
-renders game-search-results.hbs includes the list of games redirects to / if user presses button GET /rent-form/:id
+body: button find pet in renders profile-adopter 
+GET /find-dog
+renders find-dog.hbs includes the list of dogs redirects to / if user presses button GET /dog/:id
+renders find-dog.hbs redirects to /filtered-find-dog if user presses button POST /filter-dog
 
-renders rent-form.hbs redirects to /game-search-results if user presses button POST /rent-form/:id
+body: button go back t in renders profile-dog GET /find-dog
+renders find-dog.hbs includes the list of dogs 
 
-body: days price update GET /success
-
-renders success.hbs redirects to / if user presses button GET /profile
-
-renders user-profile.hbs redirects to / if user presses button POST /profile (to edit profile)
-
-redirects to /add-signup (we reuse it but for edit purposes) body: email password full name birthday gender address phone cardInfo typeOfCard cardNumber expDate CVV POST /profile (to add game)
-
-body: game title console price max days of rent GET /profile
-
-renders user-profile.hbs updated redirects to / if user presses button GET /notifications
-
-renders notifications.hbs redirects to / if user presses button GET /success (for renter)
-
-renders success.hbs redirects to /notifications if user presses button
 
 # Models
 
