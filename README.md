@@ -2,6 +2,7 @@
 
 In Adoptify, we want to promote the adoption throughout Europe of abandoned dogs in Spanish shelters. In order to conquer that goal we have created this initiative that allows shelters to publish ads about their dogs and be contacted by potential adopters.
 
+
 ## User Stories
 
  - *Homepage* - As a user I want to be able to access the homepage so that I see what the app is about and login and signup 404 - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault sign up as an adoptant - As a adoptant I want to sign up on the webpage for be able to see the pet profiles. 
@@ -10,6 +11,7 @@ In Adoptify, we want to promote the adoption throughout Europe of abandoned dogs
 - *As a user* - I want to check my profile information and be able to edit it, see the pets for adopt one. Also, to go back to the home page if I don't want to see the profile anymore. 
 - *As a user* - I want to check my profile information and be able to edit it, and add more pets. Also, to go back to the home page if I don't want to see the profile anymore. - - *Pet-profile* - As a user I want to check the pet profile to decide if i want adopt one pet. Also, to go back to the home page if I don't want to see the profile anymore. 
 - *Pet-create* - As a shelter I want to create a pet profile so that I can add more pets.
+
 
 ## List of other features outside of the MVPs scope
 
@@ -22,7 +24,8 @@ In Adoptify, we want to promote the adoption throughout Europe of abandoned dogs
 - Sign up/in with Google or Facebook
 - Add a contact form
 
-# ... ROUTES:
+
+## ... ROUTES
 
 GET /
 
@@ -66,15 +69,20 @@ Renders find-dog.hbs includes the list of dogs
 
 # Models
 
-User model
+*Adoptant model*
+Username: String Password: String Name: String Email: String Location: enum About me: String Pets: Boolean Photos: String Do you want to be a volunteer?: Boolean Other: String
 
-username: String password: String Event model
+*Shelter model*
+Username: String Email: String Password: String Location: enum Address: String About us: String Contact person: String Pets: String Photos: String
 
-owner: ObjectId name: String description: String date: Date location: String attendees: [ObjectId] Links
+*Pet model*
+Shelter: ObjectId Name: String Description: String Date: Date Weight: Number Breed: enum Good with kids: Boolean Good with other animals: Boolean Photos: String Others: String
+
 
 # Trello
 
 Link to your trello board or picture of your physical board https://trello.com/b/RNCl1E64/simple-project-board
+
 
 # Git
 
@@ -83,6 +91,7 @@ The url to your repository and to your deployed project https://github.com/Marta
 Repository Link
 
 Deploy Link
+
 
 # Slides
 
