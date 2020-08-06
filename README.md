@@ -71,7 +71,7 @@ Renders find-dog.hbs includes the list of dogs
 
  *Adoptant model*
 - Username: String 
-- Password: String 
+- PasswordHash: String 
 - Name: String 
 - Email: String 
 - Location: enum 
@@ -84,7 +84,7 @@ Renders find-dog.hbs includes the list of dogs
  *Shelter model*
 - Username: String 
 - Email: String 
-- Password: String
+- PasswordHash: String
 - Phone: Number
 - Location: enum
 - Address: String
