@@ -70,10 +70,10 @@ Renders find-dog.hbs includes the list of dogs
 # Models
 
  *Adoptant model*
-- Username: String 
-- PasswordHash: String 
+- Username: String, Required
+- PasswordHash: String, Required
 - Name: String 
-- Email: String 
+- Email: String, Required
 - Location: enum 
 - About me: String 
 - Pets: Boolean 
@@ -82,9 +82,9 @@ Renders find-dog.hbs includes the list of dogs
 - Other: String
 
  *Shelter model*
-- Username: String 
-- Email: String 
-- PasswordHash: String
+- Username: String, Required 
+- Email: String, Required 
+- PasswordHash: String, Required
 - Phone: Number
 - Location: enum
 - Address: String
@@ -96,15 +96,16 @@ Renders find-dog.hbs includes the list of dogs
 
  *Pet model*
 - Shelter: ObjectId<Shelter>
-- Name: String
+- Name: String, Required
 - Description: String
+- Size: eNum,Required
 - Age: Number
 - Weight: Number
-- Breed: enum
+- Breed: eNum, Required
 - Good with kids: Boolean
 - Good with other animals: Boolean
 - Photos: String
-- Others: String
+- Others: String/*
 
 
 # Trello
