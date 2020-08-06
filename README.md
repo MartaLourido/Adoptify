@@ -83,7 +83,8 @@ Renders find-dog.hbs includes the list of dogs
 
  *Shelter model*
 - Username: String 
-- Email: String Password: String Location: enum Address: String About us: String Contact person: String Pets: String Photos: String 
+- Email: String 
+- Password: String 
 - Phone: Number
 - Location: enum
 - Address: String
