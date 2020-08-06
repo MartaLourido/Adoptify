@@ -139,19 +139,45 @@ redirects to /notifications if user presses button
 
 Models
 
-User model
+Adoptant model
 
-username: String
-password: String
-Event model
+Username: String
+Password: String
+Name: String
+Email: String
+Location: enum
+About me: String
+Pets: Boolean
+Photos: String
+Do you want to be a volunteer?: Boolean
+Other: String
 
-owner: ObjectId<User>
-name: String
-description: String
-date: Date
-location: String
-attendees: [ObjectId<User>]
-Links
+
+Shelter model
+
+Username: String
+Email: String
+Password: String
+Location: enum
+Address: String
+About us: String
+Contact person
+Pets: String
+Photos: Strings
+
+
+Pet model
+
+Shelter: ObjectId<Shelter>
+Name: String
+Description: String
+Date: Date
+Weight: Number
+Breed: enum
+Good with kids: Boolean
+Good with other animals: Boolean
+Photos: String
+Others: String
 
 Trello
 
