@@ -196,8 +196,17 @@ Repository Link
 
 Deploy Link
 
+<<<<<<< HEAD
 Slides
 
 The url to your presentation slides
 
 Slides Link
+=======
+
+# Slides
+
+The url to your presentation slides
+
+Slides Link
+>>>>>>> 63a9a2732e1366fd28c744edd2e740b26e965168
