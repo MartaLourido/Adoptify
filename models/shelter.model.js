@@ -35,11 +35,11 @@ const shelterSchema = new Schema({
     },
     request: [{
       dogId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId, 
         ref: 'dog'
       }, 
       adopterId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'adopter'
       }, 
       }] 

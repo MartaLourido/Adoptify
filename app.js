@@ -68,7 +68,10 @@ app.get('/', (req, res, next)=>{
     }
   })
 
-const private = require('./routes/users.routes');
-app.use('/', private );
+// const adopter = require('./routes/adopter.routes');
+// app.use('/', adopter );
+
+// const shelter = require('./routes/shelter.routes');
+// app.use('/', shelter );
 
 module.exports = app;

@@ -2,9 +2,12 @@ const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs')
 
-const UserModel = require('../models/User.model')
+// const UserModel = require('../models/User.model') comento esto por que voy a unir el auth a los dos modelos
 
-
+//const for require shelter model
+const shelterModel = require("../models/shelter.model");
+//const for require adopter model
+const adopterModel = require("../models/adopter.model");
 
 router.get('/signup', (req, res) => {
     res.render('auth/signup.hbs')
@@ -51,10 +54,13 @@ router.post('/signup', (req, res) => {
 
 
 router.post('/signin', (req, res) => {
-  const { email, password} = req.body
-  console.log(req.body)
+  const { email, password, loginType} = req.body;
+  console.log(req.body);
+  console.log(loginType);
 
-  if( !email || !password){
+  if( !email || !password || !loginType){  
+    console.log('paso por aqui'); //Comprobación de si funciona el login
+    //si no le pones el tipo de usuario te pide todos los detalles
       res.status(500).render('auth/signin.hbs', {errorMessage: 'Please enter all details'})
       return;
   }
@@ -67,7 +73,7 @@ router.post('/signin', (req, res) => {
 
   const passReg = new RegExp(/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$/)
   if (!passReg.test(password)){
-    res.status(500).render('auth/signin.hbs', {errorMessage: 'Password must be 6 characters and must have a nu ber and a string'})
+    res.status(500).render('auth/signin.hbs', {errorMessage: 'Password must be 6 characters and must have a number and a string'})
     return;
   }
 
@@ -75,10 +81,25 @@ router.post('/signin', (req, res) => {
     .then((userData) => {
 
       let doesItMatch = bcryptjs.compareSync(password, userData.passwordHash); 
+      console.log(doesItMatch);
       if (doesItMatch){
         // loggedInUser = userData
-        req.session.loggedInUser = userData
-        res.redirect('/profile')
+        req.session.loggedInUser = userData;
+        switch (loginType) {  //choose
+          case '1': //adopter, definido en el sigin.hbs
+            res.redirect('/adopter');
+            break;
+
+
+            case '2': //shelter, definido en el sigin.hbs
+            res.redirect('/shelter'); //nombre de la ruta
+            break;
+        
+          default: 
+            res.redirect('/adopter'); //si no sale ninguno de los dos
+            break;
+        }
+        
       }
       else {
         res.status(500).render('auth/signin.hbs', {errorMessage: 'Passwords do not match'})
