@@ -51,11 +51,24 @@ app.use(session({
 }));
 
 
-// Routes middleware
-const indexRouter = require('./routes/index.routes');
-app.use('/', indexRouter);
+//Routes middleware
+const index = require('./routes/index.routes');
+app.use('/', index);
 
 const authRouter = require('./routes/auth.routes');
 app.use('/', authRouter);
+
+
+app.get('/', (req, res, next)=>{
+    if(req.session.loggedInUser === true){
+      next()
+    }
+    else{
+      res.render('index.hbs')
+    }
+  })
+
+const private = require('./routes/users.routes');
+app.use('/', private );
 
 module.exports = app;

@@ -15,12 +15,10 @@ router.get('/signin', (req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-    const {email, password} = req.body
+    const {username, email, password} = req.body
     console.log(req.body)
 
-    //Server validations
-
-    if(!email || !password){
+    if(!username || !email || !password){
         res.status(500).render('auth/signup.hbs', {errorMessage: 'Please enter all details'})
         return;
     }
@@ -43,7 +41,7 @@ router.post('/signup', (req, res) => {
             .then((hashPass) => {
                 console.log(hashPass)
                 // create that user in the db
-                UserModel.create({email, passwordHash: hashPass })
+                UserModel.create({username, email, passwordHash: hashPass })
                   .then(() => {
                       res.redirect('/')
                   })
@@ -56,7 +54,6 @@ router.post('/signin', (req, res) => {
   const { email, password} = req.body
   console.log(req.body)
 
-  //Server validations
   if( !email || !password){
       res.status(500).render('auth/signin.hbs', {errorMessage: 'Please enter all details'})
       return;
@@ -70,7 +67,7 @@ router.post('/signin', (req, res) => {
 
   const passReg = new RegExp(/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$/)
   if (!passReg.test(password)){
-    res.status(500).render('auth/signin.hbs', {errorMessage: 'Password must be 6 characters and must have a number and a string'})
+    res.status(500).render('auth/signin.hbs', {errorMessage: 'Password must be 6 characters and must have a nu ber and a string'})
     return;
   }
 
@@ -93,10 +90,13 @@ router.post('/signin', (req, res) => {
 })
 
 
-router.get('/profile', (req, res) => {
-    res.render('users/profile.hbs', {loggedInUser: req.session.loggedInUser})
+router.get('/adopter', (req, res) => {
+    res.render('users/adopter.hbs', {loggedInUser: req.session.loggedInUser})
 })
 
+router.get('/shelter', (req, res) => {
+  res.render('users/shelter.hbs', {loggedInUser: req.session.loggedInUser})
+})
 
 
 module.exports = router;

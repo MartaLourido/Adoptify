@@ -6,12 +6,12 @@ const UserModel = require("../models/User.model");
 
 const app = require ('../app');
 
-router.get("/main", (req,res) => {
-    res.render("private/main.hbs");
+router.get("/shelter", (req,res) => {
+    res.render("users/shelter.hbs");
 });
 
-router.get("/private", (req,res) => {
-    res.render("private/private.hbs");
+router.get("/adopter", (req,res) => {
+    res.render("users/adopter.hbs");
 });
 
 

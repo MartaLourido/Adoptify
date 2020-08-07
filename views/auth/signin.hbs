@@ -2,12 +2,24 @@
   <label for="Email">Email</label>
   <input id="Email" type="text" name="Email" placeholder="Enter Email">
 
-
   <label for="password">Password</label>
   <input id="password" type="password" name="password" placeholder="Enter password">
 
-  <button type="submit" >Sign In</button>
-
+</form>
+<form>
+  <div class="form-row align-items-center">
+    <div class="col-auto my-1">
+      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">I am a</label>
+      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        <option selected>Choose...</option>
+        <option value="1">Adopter</option>
+        <option value="2">Shelter</option>
+      </select>
+    </div>
+    <div class="col-auto my-1">
+      <button type="submit" class="btn btn-primary">Log In!</button>
+    </div>
+  </div>
 </form>
 
 {{#if errorMessage}}
