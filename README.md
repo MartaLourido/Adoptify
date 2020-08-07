@@ -185,7 +185,7 @@ Others: String
 Trello
 
 Link to your trello board or picture of your physical board
-<a href="#my-trello">https://trello.com/b/RNCl1E64/simple-project-board</a>
+<a href="#my-trello">https://trello.com/b/RNCl1E64/adoptify-friends-for-life</a>
 
 Git
 
