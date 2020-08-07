@@ -5,15 +5,17 @@ In Adoptify, we want to promote the adoption throughout Europe of abandoned dogs
 
 ## User Stories
 
- - *Homepage* - As a user I want to be able to access the homepage so that I see what the app is about and login and signup 404 - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault sign up as an adoptant - As a adoptant I want to sign up on the webpage for be able to see the pet profiles. 
+ - *Homepage* - As a user I want to be able to access the homepage so that I see what the app is about and login and signup 404 - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault sign up as an adopter - As a adopter I want to sign up on the webpage for be able to see the pet profiles. 
 - *Sign up as shelter* - As a shelter I want to sign up on the webpage so that I can create a profile and add the pets of my shelter. login - As a user I want to be able to log in on the webpage so that I can get back to my account logout.
-- *As a user* - I want to be able to log out from the webpage so that I can make sure no one will access my account adoptant-profile.
-- *As a user* - I want to check my profile information and be able to edit it, see the pets for adopt one. Also, to go back to the home page if I don't want to see the profile anymore. 
-- *As a user* - I want to check my profile information and be able to edit it, and add more pets. Also, to go back to the home page if I don't want to see the profile anymore. - - *Pet-profile* - As a user I want to check the pet profile to decide if i want adopt one pet. Also, to go back to the home page if I don't want to see the profile anymore. 
+- *Log in* - I want to be able to log out from the webpage so that I can make sure no one will access my account adopter-profile.
+- *Adopter profile* - I want to check my profile information and be able to edit it, see the pets for adopt one. Also, to go back to the home page if I don't want to see the profile anymore. 
+- *Shelter profile* - I want to check my profile information and be able to edit it, and add more pets. Also, to go back to the home page if I don't want to see the profile anymore. 
+- *Pet-profile* - As a user I want to check the pet profile to decide if i want adopt one pet. Also, to go back to the home page if I don't want to see the profile anymore. 
 - *Pet-create* - As a shelter I want to create a pet profile so that I can add more pets.
 
 
 ## List of other features outside of the MVPs scope
+
 
 - Create merchandise page
 - Upload images
@@ -69,7 +71,7 @@ Renders find-dog.hbs includes the list of dogs
 
 # Models
 
- *Adoptant model*
+ *Adopter model*
 - Username: String, Required
 - PasswordHash: String, Required
 - Name: String 
