@@ -12,6 +12,7 @@ const cookieParser = require('cookie-parser');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
 
+
 // Set up the database
 require('./configs/db.config');
 

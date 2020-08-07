@@ -18,6 +18,8 @@ router.post('/signup', (req, res) => {
     const {email, password} = req.body
     console.log(req.body)
 
+    //Server validations
+
     if(!email || !password){
         res.status(500).render('auth/signup.hbs', {errorMessage: 'Please enter all details'})
         return;
@@ -54,6 +56,7 @@ router.post('/signin', (req, res) => {
   const { email, password} = req.body
   console.log(req.body)
 
+  //Server validations
   if( !email || !password){
       res.status(500).render('auth/signin.hbs', {errorMessage: 'Please enter all details'})
       return;

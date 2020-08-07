@@ -1,0 +1,15 @@
+<form method="POST" action="/signin">
+  <label for="Email">Email</label>
+  <input id="Email" type="text" name="Email" placeholder="Enter Email">
+
+
+  <label for="password">Password</label>
+  <input id="password" type="password" name="password" placeholder="Enter password">
+
+  <button type="submit" >Sign In</button>
+
+</form>
+
+{{#if errorMessage}}
+  <div class="error">{{errorMessage}}</div>
+{{/if}} 
