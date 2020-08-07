@@ -96,7 +96,7 @@ router.post('/signin', (req, res) => {
             break;
         
           default: 
-            res.redirect('/adopter'); //si no sale ninguno de los dos
+            res.redirect('/error'); //si no sale ninguno de los dos tengo que definir la pagina a la que ir
             break;
         }
         

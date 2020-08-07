@@ -8,11 +8,11 @@ User Stories
 
 homepage - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
 404 - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
-sign up as an adopter - As a adopter I want to sign up on the webpage for be able to see the pet profiles.
+sign up as an adoptant - As a adoptant I want to sign up on the webpage for be able to see the pet profiles.
 sign up as a shelter - As a shelter I want to sign up on the webpage so that I can create a profile and add the pets of my shelter.
 login - As a user I want to be able to log in on the webpage so that I can get back to my account
 logout - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
-adopter-profile - As a user I want to check my profile information and be able to edit it, see the pets for adopt one. Also, to go back to the home page if I don't want to see the profile anymore.
+adoptant-profile - As a user I want to check my profile information and be able to edit it, see the pets for adopt one. Also, to go back to the home page if I don't want to see the profile anymore.
 shelter-profile - As a user I want to check my profile information and be able to edit it, and add more pets. Also, to go back to the home page if I don't want to see the profile anymore.
 pet-profile - As a user I want to check the pet profile to decide if i want adopt one pet. Also, to go back to the home page if I don't want to see the profile anymore.
 pet-create - As a shelter I want to create a pet profile so that I can add more pets.
@@ -142,7 +142,7 @@ redirects to /notifications if user presses button
 
 Models
 
-adopter model
+Adoptant model
 
 Username: String
 Password: String
