@@ -82,10 +82,10 @@ router.post('/signin', (req, res) => {
 
       let doesItMatch = bcryptjs.compareSync(password, userData.passwordHash); 
       console.log(doesItMatch);
-      if (doesItMatch){
+      if (doesItMatch){  
         // loggedInUser = userData
         req.session.loggedInUser = userData;
-        switch (loginType) {  //choose
+        switch (loginType) {  //choose(sigin.hbs)
           case '1': //adopter, definido en el sigin.hbs
             res.redirect('/adopter');
             break;

@@ -40,4 +40,4 @@ const adopterSchema = new Schema({
   }
 );
 
- module.exports = model('Adopter', adopterSchema);
+ module.exports = model('adopter', adopterSchema);

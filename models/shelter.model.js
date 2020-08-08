@@ -50,4 +50,4 @@ const shelterSchema = new Schema({
   }
 );
 
- module.exports = model('Shelter', shelterSchema);
+ module.exports = model('shelter', shelterSchema);
