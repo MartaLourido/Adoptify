@@ -18,7 +18,7 @@ router.get('/signin', (req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-    const {username, email, password} = req.body
+    const {username, email, password, signupType} = req.body
     console.log(req.body)
 
     if(!username || !email || !password){
@@ -44,10 +44,26 @@ router.post('/signup', (req, res) => {
             .then((hashPass) => {
                 console.log(hashPass)
                 // create that user in the db
-                UserModel.create({username, email, passwordHash: hashPass })
-                  .then(() => {
+                switch (signupType) {  //choose(sigin.hbs)
+                  case '1': //adopter, definido en el sigin.hbs
+                    adopterModel.create({username, email, passwordHash: hashPass })
+                    .then(() => {
+                        res.redirect('/') //ruta a la pagina de tu usuario se ha creado correctamente
+                    })
+                    break;
+        
+                    case '2': //shelter, definido en el sigin.hbs
+                    shelterModel.create({username, email, passwordHash: hashPass })
+                    .then(() => {
                       res.redirect('/')
-                  })
+                    })
+                    break;
+                
+                  default: 
+                    res.redirect('/error'); //si no sale ninguno de los dos tengo que definir la pagina a la que ir
+                    break;
+                }
+             
             })
       })
 })
@@ -77,46 +93,67 @@ router.post('/signin', (req, res) => {
     return;
   }
 
-  UserModel.findOne({email: email})
+  switch (loginType) {  //choose(sigin.hbs)
+    case '1': //adopter, definido en el sigin.hbs
+    adopterModel.findOne({email: email})
     .then((userData) => {
-
+      if(userData){
       let doesItMatch = bcryptjs.compareSync(password, userData.passwordHash); 
       console.log(doesItMatch);
       if (doesItMatch){  
         // loggedInUser = userData
         req.session.loggedInUser = userData;
-        switch (loginType) {  //choose(sigin.hbs)
-          case '1': //adopter, definido en el sigin.hbs
-            res.redirect('/adopter');
-            break;
-
-
-            case '2': //shelter, definido en el sigin.hbs
-            res.redirect('/shelter'); //nombre de la ruta
-            break;
-        
-          default: 
-            res.redirect('/error'); //si no sale ninguno de los dos tengo que definir la pagina a la que ir
-            break;
-        }
-        
+        res.redirect('/adopter'); //nombre de la ruta
       }
       else {
         res.status(500).render('auth/signin.hbs', {errorMessage: 'Passwords do not match'})
       }
+    }else {
+      res.status(500).render('auth/signin.hbs', {errorMessage: 'Passwords do not match'})
+    }
+  })
+    .catch((err) => {
+        console.log('Error ', err)
+    })
+    break;
+
+
+    case '2': //shelter, definido en el sigin.hbs
+    shelterModel.findOne({email: email})
+    .then((userData) => {
+      if(userData){
+      let doesItMatch = bcryptjs.compareSync(password, userData.passwordHash); 
+      console.log(doesItMatch);
+      if (doesItMatch){  
+        // loggedInUser = userData
+        req.session.loggedInUser = userData;
+        res.redirect('/shelter'); //despues de sign up se redirige a login
+      }
+      else { //si el password no existe 
+        res.status(500).render('auth/signin.hbs', {errorMessage: 'Passwords do not match'})
+      }
+    }else {  //si el usuario no existe error
+      res.status(500).render('auth/signin.hbs', {errorMessage: 'Passwords do not match'})
+    }
     })
     .catch((err) => {
         console.log('Error ', err)
     })
-})
+    break;
+  
+    default: 
+      res.redirect('/error'); //si no sale ninguno de los dos tengo que definir la pagina a la que ir
+      break;
+  }
+}) 
 
 
 router.get('/adopter', (req, res) => {
-    res.render('users/adopter.hbs', {loggedInUser: req.session.loggedInUser})
+    res.render('users/adopter.hbs', {loggedInUser: req.session.loggedInUser});
 })
 
 router.get('/shelter', (req, res) => {
-  res.render('users/shelter.hbs', {loggedInUser: req.session.loggedInUser})
+  res.render('users/shelter.hbs', {loggedInUser: req.session.loggedInUser});
 })
 
 
