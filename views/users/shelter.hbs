@@ -1,4 +1,8 @@
-<h1>We love this dog</h1>
-<img src= "https://giphy.com/gifs/4Zo41lhzKt6iZ8xff9"> 
+<h1>Shelter information</h1>
+<p>{{shelter.name}}</p>
+<p>{{shelter.location}}</p>
 
-<a href="/">Main home</a> 
+<a href="/shelter/{{user.id}}/yourdogs"><button id = "del-btn" class="btn btn-danger">Your dogs</button></a>
+<a href="/shelter/{{user.id}}/myrequests"><button id = "del-btn" class="btn btn-danger">Requests</button></a> 
+<a href="/shelter/{{user.id}}/editshelter"><button id = "del-btn" class="btn btn-danger">Edit</button></a> 
+<a href="/shelter/{{user.id}}/deleteshelter"><button id = "del-btn" class="btn btn-danger">Delete</button></a>

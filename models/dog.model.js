@@ -5,7 +5,8 @@ let CITIES = ['Álava', 'Albacete','Alicante','Almería', 'Asturias','Ávila','B
 const dogSchema = new Schema({
     /*Define schema here */
     shelter: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "shelter",
       required: true
     },
     name: {

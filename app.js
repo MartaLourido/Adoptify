@@ -75,4 +75,7 @@ app.get('/', (req, res, next)=>{
 const shelterModel = require('./routes/shelter.routes');
 app.use('/', shelterModel );
 
+const dogModel = require('./routes/shelter.routes');
+app.use('/', dogModel );
+
 module.exports = app;
