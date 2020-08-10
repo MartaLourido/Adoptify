@@ -12,6 +12,8 @@ const dogModel = require("../models/dog.model");
 
 let CITIES = ['Álava', 'Albacete','Alicante','Almería', 'Asturias','Ávila','Badajoz','Barcelona','Burgos','Cáceres','Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','A Coruña','Cuenca','Gerona','Granada','Guadalajara','Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra','Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona','Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'];
 
+let SIZE = ['small', 'medium', 'large']
+
 router.get('/pet-profile/create', (req, res) => {
   res.render('dogcreate.hbs', {CITIES})
 })
@@ -94,5 +96,21 @@ router.get('/petprofile/:dogId/deletedog', (req, res, next) => {
   .then(() => res.redirect('/shelter'))
   .catch(() => res.redirect(`/petprofile/${req.params.dogId}/edit`))
 });
+
+
+//doing the filter from the shelter, still need do it from the adopter as well
+router.get('/shelter/find-dog', (req, res) => {
+  res.render('find-dog.hbs', {CITIES:CITIES,Size:SIZE})
+})
+
+router.post('/shelter/find-dog', (req, res) => {
+  const {cities,size} = req.body;
+  dogModel.find({location: cities, size: SIZE})
+  .then ((result) =>
+    res.render('find-dog.hbs', {CITIES:CITIES,Size:SIZE, dogs: result})
+  )
+ 
+})
+
 
 module.exports = router;

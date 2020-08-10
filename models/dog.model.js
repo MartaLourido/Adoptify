@@ -28,6 +28,7 @@ const dogSchema = new Schema({
     },
     location: { 
       type: String,
+      enum: CITIES
     },
     gender: {
       type: String,
