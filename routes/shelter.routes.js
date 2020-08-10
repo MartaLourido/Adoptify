@@ -106,12 +106,29 @@ router.get('/shelter/find-dog', (req, res) => {
 
 router.post('/shelter/find-dog', (req, res) => {
   const {cities, size} = req.body;
-  dogModel.find({location: cities, size: SIZE})
+  dogModel.find({size: size})
   .then ((result) =>
     res.render('find-dog.hbs', {CITIES:CITIES,size:SIZE, dogs: result})
   )
  
 })
+
+//edit shelter profile
+
+
+//delete shelter profile
+
+router.post('/shelter/:id/deleteshelter', (req, res, next) => {
+  const { id } = req.params;
+  Movie.findByIdAndDelete(id)
+    .then(() => res.redirect('/shelter'))
+    .catch((err) => {
+      console.log(`Error while deleting a movie: ${err}`);
+      next();
+    });
+});
+
+
 
 
 module.exports = router;

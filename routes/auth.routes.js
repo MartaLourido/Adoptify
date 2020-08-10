@@ -103,7 +103,7 @@ router.post('/signin', (req, res) => {
       if (doesItMatch){  
         // loggedInUser = userData
         req.session.loggedInUser = userData;
-        res.redirect('/adopter'); //nombre de la ruta
+        res.render('users/adopter.hbs',{adopter: userData}); //nombre de la ruta
       }
       else {
         res.status(500).render('auth/signin.hbs', {errorMessage: 'Passwords do not match'})

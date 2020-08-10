@@ -27,8 +27,8 @@ const dogSchema = new Schema({
       
     },
     location: { 
-      type: String,
-      enum: ['Álava', 'Albacete','Alicante','Almería', 'Asturias','Ávila','Badajoz','Barcelona','Burgos','Cáceres','Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','A Coruña','Cuenca','Gerona','Granada','Guadalajara','Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra','Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona','Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'],
+      type: String, 
+      enum: CITIES,
       required: true
     },
     gender: {
@@ -42,6 +42,9 @@ const dogSchema = new Schema({
       type: Boolean,
     },
     other: {
+      type: String,
+    },
+    image: {
       type: String
     },
     

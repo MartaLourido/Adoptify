@@ -4,7 +4,7 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-    <form method="post" action="/shelter/find-dog" class="form-inline my-2 my-lg-0">
+    <form method="post" action="/adopter/find-dogadopter" class="form-inline my-2 my-lg-0">
       <label for="cities">Cities</label>
       <select class="form-control" name= "cities"> 
       {{#each  CITIES}}
@@ -25,9 +25,9 @@
 <main>
   {{#each dogs}}
 <div class="card" style="width: 18rem;">
-  <img src={{this.image}} style= "width: 18rem;" class="card-img-top" alt="...">
+  <img src="..." class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">{{this.name}}</h5>
+    <h5 class="card-title">{{this.location}}</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
