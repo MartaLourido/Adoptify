@@ -14,6 +14,7 @@ let CITIES = ['Álava', 'Albacete','Alicante','Almería', 'Asturias','Ávila','B
 
 let SIZE = ['small', 'medium', 'large']
 
+//create and edit petprofile
 router.get('/pet-profile/create', (req, res) => {
   res.render('dogcreate.hbs', {CITIES})
 })
@@ -104,10 +105,10 @@ router.get('/shelter/find-dog', (req, res) => {
 })
 
 router.post('/shelter/find-dog', (req, res) => {
-  const {cities,size} = req.body;
+  const {cities, size} = req.body;
   dogModel.find({location: cities, size: SIZE})
   .then ((result) =>
-    res.render('find-dog.hbs', {CITIES:CITIES,Size:SIZE, dogs: result})
+    res.render('find-dog.hbs', {CITIES:CITIES,size:SIZE, dogs: result})
   )
  
 })
