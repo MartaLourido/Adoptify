@@ -14,7 +14,33 @@ router.get('/pet-profile/create', (req, res) => {
   res.render('dogcreate.hbs');
 })
 
-router.post('/pet-profile/create', (req, res) => {
-  dogModel.create
+// router.get('/doglist', (req, res) => {
+//   res.render('doglist.hbs');
+// })
+
+router.get('/petprofile/:dogId', (req, res) => {
+    dogModel.findById(req.params.dogId) 
+    .then ((dog) => { 
+      res.render ('petprofile.hbs', {dog})
+    })
   
 })
+
+
+
+
+router.post('/pet-profile/create', (req, res) => {
+  const {
+    shelter, name, age, size, description, cities, gender, goodwkids, goodwdogs, other
+  } = req.body
+  console.log(req.body)
+  dogModel.create ({shelter, name, age, size, description, cities, gender, goodwkids: goodwkids == 'on', goodwdogs: goodwdogs == 'on', other})
+  .then ((dog) =>
+    res.redirect(`/petprofile/${dog._id}`)
+  )
+  .catch((err) => {
+    console.log('Error ', err)
+  })
+})
+
+module.exports = router;
