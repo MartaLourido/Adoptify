@@ -16,20 +16,16 @@ const dogSchema = new Schema({
     },
     size: {
       type: String,
-      enum: ['small', 'medium', 'large']
+      enum: ['small', 'medium', 'large'],
+      required: true   
     },
     location: { 
       type: shelterSchema.location
     },
-    aboutMe: {
-      type: String
-    },
-    Volunteer: {
-      type: Boolean
-    },
     other: {
       type: String
     },
+    
 
   },
   {
