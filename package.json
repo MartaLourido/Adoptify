@@ -28,9 +28,13 @@
     "express-session": "^1.17.1",
     "hbs": "^4.1.1",
     "ironhack_generator": "^1.2.0",
+    "jquery": "^3.5.1",
     "mongoose": "^5.9.27",
     "morgan": "^1.10.0",
     "serve-favicon": "^2.5.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "bin": {
+    "adoptify": "shelter.seeds.js"
+  }
 }
