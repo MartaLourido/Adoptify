@@ -28,7 +28,7 @@ const adopterSchema = new Schema({
       type: String
     },
     volunteer: {
-      type: Boolean
+      type: String
     },
     other: {
       type: String

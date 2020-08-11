@@ -1,7 +1,6 @@
-  
 const express = require('express');
 const router = express.Router();
-const bcryptjs = require('bcryptjs')
+const bcryptjs = require('bcryptjs');
 
 // const UserModel = require('../models/User.model') comento esto por que voy a unir el auth a los dos modelos
 

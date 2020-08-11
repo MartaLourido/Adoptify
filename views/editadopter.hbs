@@ -7,12 +7,12 @@
     <label for="formGroup2">Email</label>
     <input type="text" class="form-control" id="formGroup2" placeholder="Change your email" value = "{{adopter.email}}">
   </div>
-   <div class="form-group">
-    <label for="formGroup3">PasswordHash</label>
-    <input type="text" class="form-control" id="formGroup3" placeholder="New passwrod"  value = "{{adopter.passwordHash}}">
-  </div>
+   {{!-- <div class="form-group">
+    <label for="formGroup3">Password</label>
+    <input type="text" class="form-control" id="formGroup3" placeholder="New passwrod"  value = "{{adopter.password}}">
+  </div> --}}
    <div class= "form-group">
-  <select class="form-control" name = "location"> 
+  <select class="form-control" name = "city"> 
   <label for="formGroup5">Cites</label>  
    {{#each  CITIES}}
    <option value="{{this}}">{{this}}</option>
@@ -30,7 +30,7 @@
     <label for="formGroup7">Other</label>
     <input type="text" class="form-control" id="formGroup7" placeholder="Add more information" value = "{{adopter.other}}">
   </div>
-<button id = "del-btn" class="btn btn-danger">Submit</button></a>
+<a href="/adopter"><button id = "del-btn" class="btn btn-danger">Submit</button></a>
 </form>
 {{#if errorMessage}}
   <div class="error">{{errorMessage}}</div>

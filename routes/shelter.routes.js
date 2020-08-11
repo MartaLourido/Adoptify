@@ -125,10 +125,6 @@ router.post('/shelter/find-dog', (req, res) => {
           res.render('find-dog.hbs', {CITIES:CITIES,size:SIZE, dogs})
         })
     })
-
-
-
-
  
 })
 */
