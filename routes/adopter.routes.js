@@ -23,13 +23,13 @@ router.get('/adopter', (req, res) => {
         .then((adopter) => {
           console.log('User is ', adopter)
           req.session.loggedInUser = adopter
-          res.render('users/adopter.hbs', {adopter})
+          res.render('users/adopter.hbs', {loggedInUser:req.session.loggedInUser, adopter: adopter})
         })
  
 })
 
 router.get('/adopter/editadopter', (req, res) => {
-  res.render('editadopter.hbs', {adopter: req.session.loggedInUser})
+  res.render('editadopter.hbs', {loggedInUser:req.session.loggedInUser, adopter: req.session.loggedInUser})
 })
 
 //edit profile
@@ -50,7 +50,7 @@ router.post("/adopter/editadopter", (req, res) => {
 router.get('/adopter/deleteadopter/:id', (req, res) => {
   const {id} = req.params;
   adopterModel.findByIdAndDelete(id)
-    .then(() => res.redirect('/adopter'))
+    .then(() => res.redirect('/signout')) //doing logout when you delete it
     .catch((err) => {
       console.log(`Error while deleting the profile: ${err}`);
       next();
@@ -67,7 +67,7 @@ router.get('/adopter/deleteadopter/:id', (req, res) => {
 router.get('/petprofile/:dogId', (req, res) => {
   dogModel.findById(req.params.dogId) 
   .then ((dog) => { 
-    res.render ('petprofile.hbs', {dog})
+    res.render ('petprofile.hbs', {loggedInUser:req.session.loggedInUser, dog: dog})
   })
 
 })
@@ -75,7 +75,7 @@ router.get('/petprofile/:dogId', (req, res) => {
 //doing the filter from the adopter, still need do it from the adopter as well
 
 router.get('/adopter/find-dogadopter', (req, res) => {
-  res.render('find-dogadopter.hbs', {CITIES:CITIES,Size:SIZE})
+  res.render('find-dogadopter.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,Size:SIZE})
 })
 
 router.post('/adopter/find-dogadopter', (req, res) => {
@@ -83,7 +83,7 @@ router.post('/adopter/find-dogadopter', (req, res) => {
   dogModel.find({city: city, size: size})
   .then ((result) => {
   console.log(result)
-    res.render('find-dogadopter.hbs', {CITIES:CITIES,size:SIZE, dogs: result});
+    res.render('find-dogadopter.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,size:SIZE, dogs: result});
   })
 })
 

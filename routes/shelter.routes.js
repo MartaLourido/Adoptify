@@ -34,7 +34,7 @@ router.get('/doglist', (req, res) => {
 router.get('/petprofile/:dogId', (req, res) => {
     dogModel.findById(req.params.dogId) 
     .then ((dog) => { 
-      res.render ('petprofile.hbs', {dog})
+      res.render ('petprofile.hbs', {loggedInUser:req.session.loggedInUser, dog: dog})
     })
   
 })
@@ -68,7 +68,8 @@ router.get('/petprofile/:dogId/editdog', (req, res, next) => {
   //Update the dog
   // ... your code here
   dogModel.findById(req.params.dogId)
-    .then(dog => res.render('editdog.hbs', {dog}))
+    .then(dog => res.render('editdog.hbs',{loggedInUser:req.session.loggedInUser, dog: dog
+    }))
     .catch(e => console.error(e))
 })
 
@@ -101,7 +102,7 @@ router.get('/petprofile/:dogId/deletedog', (req, res, next) => {
 
 //doing the filter from the shelter, still need do it from the adopter as well
 router.get('/shelter/find-dog', (req, res) => {
-  res.render('find-dog.hbs', {CITIES:CITIES,Size:SIZE})
+  res.render('find-dog.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,Size:SIZE})
 })
 
 router.post('/shelter/find-dog', (req, res) => {
@@ -109,7 +110,7 @@ router.post('/shelter/find-dog', (req, res) => {
   dogModel.find({city: city, size: size})
   .then ((result) => {
   console.log(result)
-    res.render('find-dog.hbs', {CITIES:CITIES,size:SIZE, dogs: result});
+    res.render('find-dog.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,size:SIZE, dogs: result});
   })
 })
 
@@ -131,13 +132,30 @@ router.post('/shelter/find-dog', (req, res) => {
 
 //edit shelter profile
 
+router.get('/shelter/editshelter', (req, res) => {
+  res.render('editshelter.hbs', {loggedInUser:req.session.loggedInUser, shelter: req.session.loggedInUser})
+})
+
+//edit profile
+
+router.post("/shelter/editshelter", (req, res) => {
+  let shelterData = req.session.loggedInUser
+
+  console.log(req.body)
+  shelterModel.findByIdAndUpdate( shelterData._id, {$set: req.body})
+    .then(() => {
+      res.redirect('/shelter')    
+      })
+
+})
+
 
 //delete shelter profile
 
-router.post('/shelter/:id/deleteshelter', (req, res, next) => {
+router.get('/shelter/deleteshelter/:id', (req, res, next) => {
   const { id } = req.params;
   shelterModel.findByIdAndDelete(id)
-    .then(() => res.redirect('/shelter'))
+    .then(() => res.redirect('/signout'))
     .catch((err) => {
       console.log(`Error while deleting a movie: ${err}`);
       next();

@@ -7,12 +7,19 @@
   <body>
     <nav>
       <ul>
+        {{#unless loggedInUser}} 
         <li id="to-right">
           <a href="/signup">Signup</a> <span> | </span>
         </li>
          <li id="to-right">
           <a href="/signin">Log In</a> <span> | </span>
         </li>
+        {{/unless}}
+        {{#if loggedInUser}} 
+         <li id="to-right">
+          <a href="/signout">Sign Out</a> <span> | </span>
+        </li>
+        {{/if}}
       </ul>
     </nav>
 
