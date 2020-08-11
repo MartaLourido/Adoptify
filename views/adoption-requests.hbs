@@ -1,10 +1,10 @@
-<h1>Search for a sheltered dog!</h1>
+<h1>This is a page for see the requests of the shelter</h1>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand">Find a dog!</a>
+  <a class="navbar-brand">Your requests</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-    <form method="post" action="/shelter/find-dog" class="form-inline my-2 my-lg-0">
+    <form method="post" action="/shelter/adoption-requests" class="form-inline my-2 my-lg-0">
       <label for="cities">Cities</label>
       <select class="form-control" name= "cities"> 
       {{#each  CITIES}}
@@ -25,11 +25,11 @@
 <main>
   {{#each dogs}}
 <div class="card" style="width: 18rem;">
-  <img src={{this.image}} style= "width: 18rem;" class="card-img-top" alt="...">
+  <img src="..." class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">{{this.name}}</h5>
+    <h5 class="card-title">{{this.location}}</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">See this dog!</a>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
 {{/each}}
@@ -37,4 +37,8 @@
 
 {{#if errorMessage}}
   <div class="error">{{errorMessage}}</div>
+<<<<<<< HEAD
 {{/if}} 
+=======
+{{/if}} 
+>>>>>>> b64f905b9081f9e4765b298f70f67b388232d2b1
