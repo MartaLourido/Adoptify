@@ -22,7 +22,8 @@ const adopterSchema = new Schema({
     },
     location: { 
       type: String, 
-      enum: CITIES 
+      enum: CITIES,
+      required: true
     },
     aboutMe: {
       type: String

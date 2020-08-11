@@ -5,7 +5,8 @@ let CITIES = ['Álava', 'Albacete','Alicante','Almería', 'Asturias','Ávila','B
 const dogSchema = new Schema({
     /*Define schema here */
     shelter: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "shelter",
       required: true
     },
     name: {
@@ -26,7 +27,9 @@ const dogSchema = new Schema({
       
     },
     location: { 
-      type: String,
+      type: String, 
+      enum: CITIES,
+      required: true
     },
     gender: {
       type: String,
@@ -39,6 +42,9 @@ const dogSchema = new Schema({
       type: Boolean,
     },
     other: {
+      type: String,
+    },
+    image: {
       type: String
     },
     

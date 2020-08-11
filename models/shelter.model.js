@@ -22,7 +22,8 @@ const shelterSchema = new Schema({
     },
     location: { 
       type: String, 
-      enum: CITIES 
+      enum: CITIES,
+      required: true
     },
     address: { 
       type: String
@@ -31,6 +32,9 @@ const shelterSchema = new Schema({
       type: String
     },
     contactPerson: {
+      type: String,
+    },
+    image: {
       type: String,
     },
     request: [{

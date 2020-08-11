@@ -120,7 +120,11 @@ router.post('/shelter/find-dog', (req, res) => {
 
 router.post('/shelter/:id/deleteshelter', (req, res, next) => {
   const { id } = req.params;
+<<<<<<< HEAD
   shelterModel.findByIdAndDelete(id)
+=======
+  Movie.findByIdAndDelete(id)
+>>>>>>> b64f905b9081f9e4765b298f70f67b388232d2b1
     .then(() => res.redirect('/shelter'))
     .catch((err) => {
       console.log(`Error while deleting a movie: ${err}`);
@@ -131,4 +135,8 @@ router.post('/shelter/:id/deleteshelter', (req, res, next) => {
 
 
 
+<<<<<<< HEAD
 module.exports = router;
+=======
+module.exports = router;
+>>>>>>> b64f905b9081f9e4765b298f70f67b388232d2b1

@@ -69,10 +69,13 @@ app.get('/', (req, res, next)=>{
   })
 
 
-// const adopter = require('./routes/adopter.routes');
-// app.use('/', adopter );
+const adopter = require('./routes/adopter.routes');
+app.use('/', adopter );
 
 const shelterModel = require('./routes/shelter.routes');
 app.use('/', shelterModel );
+
+const dogModel = require('./routes/shelter.routes');
+app.use('/', dogModel );
 
 module.exports = app;
