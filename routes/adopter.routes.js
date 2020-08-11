@@ -19,7 +19,13 @@ let SIZE = ['', 'small', 'medium', 'large']
 //edit an delete adopter --> route /editadopter
 
 router.get('/adopter', (req, res) => {
-  res.render('adopter.hbs', {adopter: req.session.loggedInUser})
+  adopterModel.findById(req.session.loggedInUser._id)
+        .then((adopter) => {
+          console.log('User is ', adopter)
+          req.session.loggedInUser = adopter
+          res.render('users/adopter.hbs', {adopter})
+        })
+ 
 })
 
 router.get('/adopter/editadopter', (req, res) => {
@@ -28,18 +34,13 @@ router.get('/adopter/editadopter', (req, res) => {
 
 //edit profile
 
-router.post("/adopter", (req, res) => {
+router.post("/adopter/editadopter", (req, res) => {
   let adopterData = req.session.loggedInUser
-  const {name, location} = req.body
 
-  dogModel.findByIdAndUpdate( adopterData._id,{name, location})
-    .then((result) => {
-      dogModel.findById(adopterData._id)
-        .then((theResult) => {
-          theResult = req.session.loggedInUser 
-          res.redirect("/adopter")
-        })
-      
+  console.log(req.body)
+  adopterModel.findByIdAndUpdate( adopterData._id, {$set: req.body})
+    .then(() => {
+      res.redirect('/adopter')    
       })
 
 })

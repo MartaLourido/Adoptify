@@ -151,9 +151,7 @@ router.post('/signin', (req, res) => {
 }) 
 
 
-router.get('/adopter', (req, res) => {
-    res.render('users/adopter.hbs', {loggedInUser: req.session.loggedInUser});
-})
+
 
 router.get('/shelter', (req, res) => {
   res.render('users/shelter.hbs', {loggedInUser: req.session.loggedInUser});
