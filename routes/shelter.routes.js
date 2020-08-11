@@ -10,9 +10,9 @@ const adopterModel = require("../models/adopter.model");
 //const for require dog model
 const dogModel = require("../models/dog.model");
 
-let CITIES = ['Álava', 'Albacete','Alicante','Almería', 'Asturias','Ávila','Badajoz','Barcelona','Burgos','Cáceres','Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','A Coruña','Cuenca','Gerona','Granada','Guadalajara','Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra','Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona','Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'];
+let CITIES = ['', 'Álava', 'Albacete','Alicante','Almería', 'Asturias','Ávila','Badajoz','Barcelona','Burgos','Cáceres','Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','A Coruña','Cuenca','Gerona','Granada','Guadalajara','Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra','Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona','Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'];
 
-let SIZE = ['small', 'medium', 'large']
+let SIZE = ['','small', 'medium', 'large']
 
 //create and edit petprofile
 router.get('/pet-profile/create', (req, res) => {
@@ -50,10 +50,10 @@ router.get('/petprofile/:dogId', (req, res) => {
 
 router.post('/pet-profile/create', (req, res) => {
   const {
-    shelter, name, age, size, description, cities, gender, goodwkids, goodwdogs, other
+    name, age, size, description, city, gender, goodwkids, goodwdogs, other
   } = req.body
   console.log(req.body)
-  dogModel.create ({shelter: req.session.loggedInUser._id, name, age, size, description, cities, gender, goodwkids: goodwkids == 'on', goodwdogs: goodwdogs == 'on', other})
+  dogModel.create ({shelter: req.session.loggedInUser._id, name, age, size, description, city, gender, goodwkids: goodwkids == 'on', goodwdogs: goodwdogs == 'on', other})
   .then ((dog) =>
     res.redirect(`/petprofile/${dog._id}`)
   )
@@ -105,9 +105,19 @@ router.get('/shelter/find-dog', (req, res) => {
 })
 
 router.post('/shelter/find-dog', (req, res) => {
-  const {cities, size} = req.body;
+  const {city, size} = req.body;
+  dogModel.find({city: city, size: size})
+  .then ((result) => {
+  console.log(result)
+    res.render('find-dog.hbs', {CITIES:CITIES,size:SIZE, dogs: result});
+  })
+})
 
-  shelterModel.find({location: cities})
+/*
+router.post('/shelter/find-dog', (req, res) => {
+  const {city, size} = req.body;
+  console.log(req.body);
+  shelterModel.find({city: city})
     .then((shelters) => {
         let shelterIds = shelters.map((shelter) => shelter._id)
         dogModel.find({shelter: {$in : shelterIds}}) //if dog is from that shelter
@@ -121,6 +131,7 @@ router.post('/shelter/find-dog', (req, res) => {
 
  
 })
+*/
 
 //edit shelter profile
 
@@ -136,6 +147,7 @@ router.post('/shelter/:id/deleteshelter', (req, res, next) => {
       next();
     });
 });
+
 
 
 

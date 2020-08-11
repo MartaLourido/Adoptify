@@ -1,10 +1,13 @@
 <form method="POST" action="/signin">
-  <label for="Email">Email</label>
-  <input id="email" type="text" name="email" placeholder="Enter Email">
-
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Enter password">
-
+  <form class="dropdown-menu p-4">
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input name="email" type="email" class="form-control" id="email" placeholder="email@example.com">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input name="password" type="password" class="form-control" id="password" placeholder="Password">
+  </div>
   <div class="form-row align-items-center">
     <div class="col-auto my-1">
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">I am a</label>

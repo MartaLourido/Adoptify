@@ -14,8 +14,8 @@ const dogModel = require("../models/dog.model");
 //adopter tiene que ir al finder, tambien el shelter va al finder
 //
 
-let CITIES = ['Álava', 'Albacete','Alicante','Almería', 'Asturias','Ávila','Badajoz','Barcelona','Burgos','Cáceres','Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','A Coruña','Cuenca','Gerona','Granada','Guadalajara','Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra','Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona','Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'];
-let SIZE = ['small', 'medium', 'large']
+let CITIES = ['', 'Álava', 'Albacete','Alicante','Almería', 'Asturias','Ávila','Badajoz','Barcelona','Burgos','Cáceres','Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','A Coruña','Cuenca','Gerona','Granada','Guadalajara','Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra','Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona','Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'];
+let SIZE = ['', 'small', 'medium', 'large']
 //edit an delete adopter --> route /editadopter
 
 router.get('/adopter', (req, res) => {
@@ -72,6 +72,22 @@ router.get('/petprofile/:dogId', (req, res) => {
 })
 
 //doing the filter from the adopter, still need do it from the adopter as well
+
+router.get('/adopter/find-dogadopter', (req, res) => {
+  res.render('find-dogadopter.hbs', {CITIES:CITIES,Size:SIZE})
+})
+
+router.post('/adopter/find-dogadopter', (req, res) => {
+  const {city, size} = req.body;
+  dogModel.find({city: city, size: size})
+  .then ((result) => {
+  console.log(result)
+    res.render('find-dogadopter.hbs', {CITIES:CITIES,size:SIZE, dogs: result});
+  })
+})
+
+
+/*
 router.get('/adopter/find-dogadopter', (req, res) => {
   console.log('pasa por aqui');
   res.render('find-dogadopter.hbs', {CITIES:CITIES,Size:SIZE})
@@ -83,7 +99,7 @@ router.post('/adopter/find-dogadopter', (req, res) => {
   .then ((result) =>
     res.render('find-dogadopter.hbs', {CITIES:CITIES,size:SIZE, dogs: result}));
 })
- 
+*/ 
 
 
 

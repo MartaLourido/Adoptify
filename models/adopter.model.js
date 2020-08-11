@@ -20,7 +20,7 @@ const adopterSchema = new Schema({
     name: {
       type: String
     },
-    location: { 
+    city: { 
       type: String, 
       enum: CITIES,
     },

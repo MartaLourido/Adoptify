@@ -10,8 +10,10 @@ const shelterModel = require("../models/shelter.model");
 //const for require adopter model
 const adopterModel = require("../models/adopter.model");
 
+let CITIES = ['Álava', 'Albacete','Alicante','Almería', 'Asturias','Ávila','Badajoz','Barcelona','Burgos','Cáceres','Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','A Coruña','Cuenca','Gerona','Granada','Guadalajara','Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra','Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona','Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'];
+
 router.get('/signup', (req, res) => {
-    res.render('auth/signup.hbs')
+    res.render('auth/signup.hbs',{CITIES})
 })
 
 router.get('/signin', (req, res) => {
@@ -19,13 +21,14 @@ router.get('/signin', (req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-    const {username, email, password, signupType} = req.body
+    const {username, email, password, signupType, city, name} = req.body
     console.log(req.body)
 
     if(!username || !email || !password){
         res.status(500).render('auth/signup.hbs', {errorMessage: 'Please enter all details'})
-        return;
+        return;   
     }
+    
 
     const emailReg = new RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)
     if (!emailReg.test(email)){
@@ -47,14 +50,14 @@ router.post('/signup', (req, res) => {
                 // create that user in the db
                 switch (signupType) {  //choose(sigin.hbs)
                   case '1': //adopter, definido en el sigin.hbs
-                    adopterModel.create({username, email, passwordHash: hashPass })
+                    adopterModel.create({username, email, passwordHash: hashPass, name, city })
                     .then(() => {
                         res.redirect('/') //ruta a la pagina de tu usuario se ha creado correctamente
                     })
                     break;
         
                     case '2': //shelter, definido en el sigin.hbs
-                    shelterModel.create({username, email, passwordHash: hashPass })
+                    shelterModel.create({username, email, passwordHash: hashPass, name, city })
                     .then(() => {
                       res.redirect('/')
                     })
