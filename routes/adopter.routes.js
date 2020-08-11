@@ -72,18 +72,26 @@ router.get('/petprofile/:dogId', (req, res) => {
 
 })
 
-//doing the filter from the adopter, still need do it from the adopter as well
-
+//doing the filter from the shelter, still need do it from the adopter as well
 router.get('/adopter/find-dogadopter', (req, res) => {
   res.render('find-dogadopter.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,Size:SIZE})
 })
 
 router.post('/adopter/find-dogadopter', (req, res) => {
   const {city, size} = req.body;
-  dogModel.find({city: city, size: size})
+  let filter ={}; //creo objeto vacio, si la ciudad y el size estan vacios salen todos los perros
+  if(city !=''){  
+    filter.city=city;
+  }
+  if(size !=''){
+    filter.size=size;
+  }
+  dogModel.find(
+    filter
+    )
   .then ((result) => {
   console.log(result)
-    res.render('find-dogadopter.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,size:SIZE, dogs: result});
+    res.render('find-dogadopter.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,Size:SIZE, dogs: result});
   })
 })
 

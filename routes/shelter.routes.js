@@ -64,7 +64,7 @@ router.post('/pet-profile/create', (req, res) => {
 
 
 //edit get y post
-router.get('/petprofile/:dogId/editdog', (req, res, next) => {
+router.get('/petprofile/editdog/:dogId/', (req, res, next) => {
   //Update the dog
   // ... your code here
   dogModel.findById(req.params.dogId)
@@ -73,7 +73,7 @@ router.get('/petprofile/:dogId/editdog', (req, res, next) => {
     .catch(e => console.error(e))
 })
 
-router.post('/petprofile/:dogId/editdog', (req, res, next) => {
+router.post('/petprofile/editdog/:dogId/', (req, res, next) => {
   // Update the dog profile
   const {
     shelter, name, age, size, description, cities, gender, goodwkids, goodwdogs, other
@@ -107,8 +107,8 @@ router.get('/shelter/find-dog', (req, res) => {
 
 router.post('/shelter/find-dog', (req, res) => {
   const {city, size} = req.body;
-  let filter ={}; //creo objeto vacio
-  if(city !=''){  //si la ciudad esta vacia salen todos los perros
+  let filter ={}; //creo objeto vacio, si la ciudad y el size estan vacios salen todos los perros
+  if(city !=''){  
     filter.city=city;
   }
   if(size !=''){
