@@ -13,6 +13,11 @@ const dogSchema = new Schema({
       type: String,
       required: true,
     },
+    city: { 
+      type: String, 
+      enum: CITIES,
+      required: true
+    },
     description: {
       type: String, 
       required: true
@@ -25,11 +30,6 @@ const dogSchema = new Schema({
     breed: {
       type: String,
       
-    },
-    location: { 
-      type: String, 
-      enum: CITIES,
-      required: true
     },
     other: {
       type: String,

@@ -1,14 +1,42 @@
 <form method="POST" action="/signup">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="Enter username">
+
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="inputEmail">Email</label>
+    <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Email">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="inputPassword">Password</label>
+    <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password">
+  </div>
+</div>
   
-  <label for="Email">Email</label>
-  <input id="email" type="text" name="email" placeholder="Enter Email">
+<div class="col-auto">
+  <label class="sr-only" for="inputUser">Username</label>
+    <div class="input-group mb-2">
+    <div class="input-group-prepend">
+      <div class="input-group-text">@</div>
+    </div>
+  <input name="username" type="text" class="form-control" id="inputUser" placeholder="Username">
+      </div>
+    </div>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input name="name" type="text" class="form-control" id="name" placeholder="Name adopter or shelter">
+  </div>
+  
+  <div class="form-row align-items-center">
+    <div class="col-auto my-1">
+      <label for="cities">City</label>
+      <select class="custom-select mr-sm-2" id="cities" name="city">
+        {{#each  CITIES}}
+          <option value="{{this}}">{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Enter password">
-
-    <div class="form-row align-items-center">
+<div class="form-row align-items-center">
     <div class="col-auto my-1">
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">I am a</label>
       <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="signupType">
@@ -17,20 +45,8 @@
         <option value="2">Shelter</option>
       </select>
     </div>
-    <div class="col-auto my-1">
-      <button type="submit" class="btn btn-primary">Sign up!</button>
-    </div>
-  </div>
-
-
-  {{!-- <div class="col-auto my-1"> 
-      <input type="submit" name="action" value="Sign up as a shelter" />
-      <input type="submit" name="action" value="Sign up as a adopter" />  
-  </div> --}}
-</form>
-    
-  
- 
+  <button type="submit" class="btn btn-primary">Sign up</button>
+</form>  
 
 
 {{#if errorMessage}}

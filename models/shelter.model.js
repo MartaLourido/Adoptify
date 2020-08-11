@@ -20,7 +20,7 @@ const shelterSchema = new Schema({
     name: {
       type: String,
     },
-    location: { 
+    city: { 
       type: String, 
       enum: CITIES,
       required: true
