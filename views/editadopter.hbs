@@ -1,4 +1,4 @@
-<form method="POST" action='/editadopter'>
+<form method="POST" action='/adopter/editadopter'>
   <div class="form-group">
     <label for="formGroup1">Name</label>
     <input type="text" class="form-control" id="formGroup1" placeholder="Name" value = "{{adopter.name}}">
@@ -7,30 +7,23 @@
     <label for="formGroup2">Email</label>
     <input type="text" class="form-control" id="formGroup2" placeholder="Change your email" value = "{{adopter.email}}">
   </div>
-   {{!-- <div class="form-group">
-    <label for="formGroup3">Password</label>
-    <input type="text" class="form-control" id="formGroup3" placeholder="New passwrod"  value = "{{adopter.password}}">
-  </div> --}}
-   <div class= "form-group">
-  <select class="form-control" name = "city"> 
-  <label for="formGroup5">Cites</label>  
-   {{#each  CITIES}}
-   <option value="{{this}}">{{this}}</option>
-   {{/each}}
-  </select>
+<div class="form-group">
+    <label for="formGroup4">City</label>
+    <input type="text" name="city" class="form-control" id="formGroup4" placeholder="Add more information" value = "{{adopter.city}}">
+  </div>
    <div class="form-group">
     <label for="formGroup4">About me</label>
-    <input type="text" class="form-control" id="formGroup4" placeholder="Add more information" value = "{{adopter.aboutMe}}">
+    <input type="text" name="aboutMe" class="form-control" id="formGroup4" placeholder="Add more information" value = "{{adopter.aboutMe}}">
   </div>
    <div class="form-group">
     <label for="formGroup6">Do you want be a volunteer?</label>
-    <input type="text" class="form-control" id="formGroup6" placeholder="Add more information" value = "{{adopter.volunteer}}">
+    <input type="text" name="volunteer" class="form-control" id="formGroup6" placeholder="Add more information" value = "{{adopter.volunteer}}">
   </div>
    <div class="form-group">
     <label for="formGroup7">Other</label>
-    <input type="text" class="form-control" id="formGroup7" placeholder="Add more information" value = "{{adopter.other}}">
+    <input type="text" name="other" class="form-control" id="formGroup7" placeholder="Add more information" value = "{{adopter.other}}">
   </div>
-<a href="/adopter"><button id = "del-btn" class="btn btn-danger">Submit</button></a>
+<button id = "del-btn" class="btn btn-danger">Submit</button>
 </form>
 {{#if errorMessage}}
   <div class="error">{{errorMessage}}</div>
