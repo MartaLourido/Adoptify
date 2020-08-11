@@ -51,7 +51,7 @@ router.post('/signup', (req, res) => {
                   case '1': //adopter, definido en el sigin.hbs
                     adopterModel.create({username, email, passwordHash: hashPass, name, city })
                     .then(() => {
-                        res.redirect('/') //ruta a la pagina de tu usuario se ha creado correctamente
+                        res.redirect('/signin') //ruta a la pagina de tu usuario se ha creado correctamente
                     })
                     break;
         
