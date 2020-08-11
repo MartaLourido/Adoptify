@@ -46,7 +46,7 @@ const shelterSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'adopter'
       }, 
-      }] 
+      }]
     
   },
   {

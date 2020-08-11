@@ -2,11 +2,11 @@
 /* BASIC */
 
 html {
-  background-color: #56baed;
+  background-color:   white;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Helvetica", sans-serif;
   height: 100vh;
 }
 
@@ -82,7 +82,7 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #56baed;
+  background-color: #F2CB49;
   border: none;
   color: white;
   padding: 15px 80px;

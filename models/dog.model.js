@@ -19,8 +19,8 @@ const dogSchema = new Schema({
     },
     size: {
       type: String,
-      required: true,
-      enum: ['small', 'medium', 'large']
+      enum: ['small', 'medium', 'large'],
+      required: true   
     },
     breed: {
       type: String,
@@ -30,16 +30,6 @@ const dogSchema = new Schema({
       type: String, 
       enum: CITIES,
       required: true
-    },
-    gender: {
-      type: String,
-      enum: ['female', 'male']
-    },
-    goodwkids: {
-      type: Boolean,
-    },
-    goodwdogs: {
-      type: Boolean,
     },
     other: {
       type: String,
