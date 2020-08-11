@@ -56,6 +56,10 @@ router.get('/adopter/deleteadopter/:id', (req, res) => {
     });
 });
 
+// .deleteOne({ name: "adopter" })
+// .then(() => {(
+//   console.log("Your  profile has been deleted"));
+// })
 
 
 //obteniendo el pet profile por id
@@ -69,7 +73,7 @@ router.get('/petprofile/:dogId', (req, res) => {
 
 //doing the filter from the adopter, still need do it from the adopter as well
 router.get('/adopter/find-dogadopter', (req, res) => {
-  console.log('paso por aca');
+  console.log('pasa por aqui');
   res.render('find-dogadopter.hbs', {CITIES:CITIES,Size:SIZE})
 });
 
