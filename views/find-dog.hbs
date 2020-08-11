@@ -1,0 +1,40 @@
+<h1>Search for a sheltered dog!</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">Find a dog!</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <form method="post" action="/shelter/find-dog" class="form-inline my-2 my-lg-0">
+      <label for="cities">Cities</label>
+      <select class="form-control" name= "cities"> 
+      {{#each  CITIES}}
+      <option value="{{this}}">{{this}}</option>
+      {{/each}}
+      </select>
+      <label for="size">Size</label>
+      <select class="form-control" name= "size"> 
+      {{#each  Size}}
+      <option value="{{this}}">{{this}}</option>
+      {{/each}}
+      </select>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<main>
+  {{#each dogs}}
+<div class="card" style="width: 18rem;">
+  <img src={{this.image}} style= "width: 18rem;" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{this.name}}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">See this dog!</a>
+  </div>
+</div>
+{{/each}}
+</main>
+
+{{#if errorMessage}}
+  <div class="error">{{errorMessage}}</div>
+{{/if}} 

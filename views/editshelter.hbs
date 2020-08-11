@@ -1,0 +1,14 @@
+  
+<h2>Edit a Shelter profile</h2>
+
+<form action="/shelter/{{_id}}/edit" method="POST">
+  <label for="name-input">name</label>
+  <input type="text" name="name" id="name-input" value="{{shelter.name}}">
+  <br>
+
+  <label for="location-input">location</label>
+  <input type="text" name="location" id="location-input" value="{{shelter.location}}">
+  <br>
+
+  <button type="submit">Save Changes</button>
+</form> 
