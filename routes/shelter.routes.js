@@ -106,10 +106,19 @@ router.get('/shelter/find-dog', (req, res) => {
 
 router.post('/shelter/find-dog', (req, res) => {
   const {cities, size} = req.body;
-  dogModel.find({size: size})
-  .then ((result) =>
-    res.render('find-dog.hbs', {CITIES:CITIES,size:SIZE, dogs: result})
-  )
+
+  shelterModel.find({location: cities})
+    .then((shelters) => {
+        let shelterIds = shelters.map((shelter) => shelter._id)
+        dogModel.find({shelter: {$in : shelterIds}}) //if dog is from that shelter
+        .then((dogs) => {
+          res.render('find-dog.hbs', {CITIES:CITIES,size:SIZE, dogs})
+        })
+    })
+
+
+
+
  
 })
 
@@ -120,11 +129,7 @@ router.post('/shelter/find-dog', (req, res) => {
 
 router.post('/shelter/:id/deleteshelter', (req, res, next) => {
   const { id } = req.params;
-<<<<<<< HEAD
   shelterModel.findByIdAndDelete(id)
-=======
-  Movie.findByIdAndDelete(id)
->>>>>>> b64f905b9081f9e4765b298f70f67b388232d2b1
     .then(() => res.redirect('/shelter'))
     .catch((err) => {
       console.log(`Error while deleting a movie: ${err}`);
@@ -135,8 +140,4 @@ router.post('/shelter/:id/deleteshelter', (req, res, next) => {
 
 
 
-<<<<<<< HEAD
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> b64f905b9081f9e4765b298f70f67b388232d2b1
