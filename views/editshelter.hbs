@@ -1,47 +1,36 @@
 <h2>Edit a Shelter profile</h2>
 
-
-{{!-- <form action="/shelter/{{_id}}/edit" method="POST">
-  <label for="name-input">name</label>
-  <input type="text" name="name" id="name-input" value="{{shelter.name}}">
-  <br>
-
-  <label for="location-input">location</label>
-  <input type="text" name="city" id="cityinput" value="{{shelter.city}}">
-  <br>
-
-  <button type="submit">Save Changes</button>
-</form>  --}}
-
-
-<form method="POST" action='/shelter/editshelter'>
+<form action="/shelter/editshelter" method="POST">
   <div class="form-group">
-    <label for="formGroup1">Name</label>
-    <input type="text" class="form-control" id="formGroup1" placeholder="ame" value = "{{shelter.name}}">
+    <label for="formGroup1">username</label>
+    <input type="text" class="form-control" id="formGroup1" placeholder="username" value = "{{shelter.username}}">
   </div>
   <div class="form-group">
     <label for="formGroup2">Email</label>
     <input type="text" class="form-control" id="formGroup2" placeholder="Change your email" value = "{{shelter.email}}">
   </div>
-  <div class="form-group">
-    <label for="formGroup2">Contact person</label>
-    <input type="text" class="form-control" id="formGroup2" placeholder="How is responsible in the shelter?" value = "{{shelter.contactPerson}}">
+   <div class="form-group">
+    <label for="formGroup1">name</label>
+    <input type="text" class="form-control" id="formGroup1" placeholder="write your name here" value = "{{shelter.name}}">
   </div>
-<div class="form-group">
+  <div class="form-group">
     <label for="formGroup4">City</label>
     <input type="text" name="city" class="form-control" id="formGroup4" placeholder="Add more information" value = "{{shelter.city}}">
   </div>
    <div class="form-group">
     <label for="formGroup4">About us</label>
-    <input type="text" name="aboutUs" class="form-control" id="formGroup4" placeholder="Add more information" value = "{{shelter.aboutUs}}">
+    <input type="text" name="aboutUs" class="form-control" id="formGroup4" placeholder="Add more information about you!" value = "{{shelter.aboutUs}}">
   </div>
    <div class="form-group">
-    <label for="formGroup7">Other</label>
-    <input type="text" name="other" class="form-control" id="formGroup7" placeholder="Add more information" value = "{{shelter.other}}">
+    <label for="formGroup6">Contact person</label>
+    <input type="text" name="contactPerson" class="form-control" id="formGroup6" placeholder="Add the contact information" value = "{{shelter.contactPerson}}">
+  </div>
+   <div class="form-group">
+    <label for="formGroup7">Address</label>
+    <input type="text" name="other" class="form-control" id="formGroup7" placeholder="Add your address" value = "{{shelter.address}}">
   </div>
 <button id = "del-btn" class="btn btn-danger">Submit</button>
 </form>
-
 {{#if errorMessage}}
   <div class="error">{{errorMessage}}</div>
 {{/if}} 

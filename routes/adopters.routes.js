@@ -14,86 +14,52 @@ let SIZE = ['', 'small', 'medium', 'large']
 
 
 
-router.get('/adopter', (req, res) => {
+router.get('/', (req, res) => {
   adopterModel.findById(req.session.loggedInUser._id)
         .then((adopter) => {
           console.log('User is ', adopter)
           req.session.loggedInUser = adopter
-          res.render('users/adopter.hbs', {adopter})
-        })
- 
+          res.render('users/adopter.hbs', {loggedInUser:req.session.loggedInUser, adopter: adopter})
+        }) 
 })
 
-router.get('/adopter/editadopter', (req, res) => {
-  res.render('editadopter.hbs', {adopter: req.session.loggedInUser})
+router.get('/edit', (req, res) => {
+  res.render('editadopter.hbs', {loggedInUser:req.session.loggedInUser, adopter: req.session.loggedInUser})
 })
 
-router.post("/adopter/editadopter", (req, res) => {
+router.post("/edit", (req, res) => {
   let adopterData = req.session.loggedInUser
   console.log(req.body)
   adopterModel.findByIdAndUpdate( adopterData._id, {$set: req.body})
     .then(() => {
-      res.redirect('/adopter')    
+      res.redirect('/')    
       })
-
 })
 
 
-router.get('/adopter/deleteadopter/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const {id} = req.params;
   adopterModel.findByIdAndDelete(id)
-    .then(() => res.redirect('/adopter'))
+    .then(() => res.redirect('/signout')) //doing logout when you delete it
     .catch((err) => {
       console.log(`Error while deleting the profile: ${err}`);
       next();
     });
 });
 
-// .deleteOne({ name: "adopter" })
-// .then(() => {(
-//   console.log("Your  profile has been deleted"));
-// })
 
-
-//obteniendo el pet profile por id
-router.get('/petprofile/:dogId', (req, res) => {
-  dogModel.findById(req.params.dogId) 
-  .then ((dog) => { 
-    res.render ('petprofile.hbs', {dog})
-  })
-
+router.get('/findadoption', (req, res) => {
+  res.render('find-dogadopter.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,Size:SIZE})
 })
 
-//doing the filter from the adopter, still need do it from the adopter as well
-
-router.get('/adopter/find-dogadopter', (req, res) => {
-  res.render('find-dogadopter.hbs', {CITIES:CITIES,Size:SIZE})
-})
-
-router.post('/adopter/find-dogadopter', (req, res) => {
+router.post('/findadoption', (req, res) => {
   const {city, size} = req.body;
   dogModel.find({city: city, size: size})
   .then ((result) => {
   console.log(result)
-    res.render('find-dogadopter.hbs', {CITIES:CITIES,size:SIZE, dogs: result});
+    res.render('find-dogadopter.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,size:SIZE, dogs: result});
   })
 })
-
-
-/*
-router.get('/adopter/find-dogadopter', (req, res) => {
-  console.log('pasa por aqui');
-  res.render('find-dogadopter.hbs', {CITIES:CITIES,Size:SIZE})
-});
-
-router.post('/adopter/find-dogadopter', (req, res) => {
-  const {cities, size} = req.body;
-  dogModel.find({location: cities, size: SIZE})
-  .then ((result) =>
-    res.render('find-dogadopter.hbs', {CITIES:CITIES,size:SIZE, dogs: result}));
-})
-*/ 
-
 
 
 module.exports = router;

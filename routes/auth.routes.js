@@ -51,7 +51,7 @@ router.post('/signup', (req, res) => {
                   case '1': //adopter, definido en el sigin.hbs
                     adopterModel.create({username, email, passwordHash: hashPass, name, city })
                     .then(() => {
-                        res.redirect('/') //ruta a la pagina de tu usuario se ha creado correctamente
+                        res.redirect('/signin') //ruta a la pagina de tu usuario se ha creado correctamente
                     })
                     break;
         
@@ -74,11 +74,9 @@ router.post('/signup', (req, res) => {
 
 router.post('/signin', (req, res) => {
   const { email, password, loginType} = req.body;
-  console.log(req.body);
-  console.log(loginType);
+
 
   if( !email || !password || !loginType){  
-    console.log('paso por aqui'); //Comprobación de si funciona el login
     //si no le pones el tipo de usuario te pide todos los detalles
       res.status(500).render('auth/signin.hbs', {errorMessage: 'Please enter all details'})
       return;
@@ -106,7 +104,7 @@ router.post('/signin', (req, res) => {
       if (doesItMatch){  
         // loggedInUser = userData
         req.session.loggedInUser = userData;
-        res.render('users/adopter.hbs',{adopter: userData}); //nombre de la ruta
+        res.render('users/adopter.hbs',{loggedInUser:req.session.loggedInUser, adopter: userData}); //nombre de la ruta
       }
       else {
         res.status(500).render('auth/signin.hbs', {errorMessage: 'Passwords do not match'})
@@ -130,7 +128,7 @@ router.post('/signin', (req, res) => {
       if (doesItMatch){  
         // loggedInUser = userData
         req.session.loggedInUser = userData;
-        res.redirect('/shelter'); //despues de sign up se redirige a login
+        res.render('users/shelter.hbs',{loggedInUser:req.session.loggedInUser, shelter: userData}); //nombre de la ruta
       }
       else { //si el password no existe 
         res.status(500).render('auth/signin.hbs', {errorMessage: 'Passwords do not match'})
@@ -152,9 +150,15 @@ router.post('/signin', (req, res) => {
 
 
 
-
 router.get('/shelter', (req, res) => {
   res.render('users/shelter.hbs', {loggedInUser: req.session.loggedInUser});
+})
+
+//doing the log out
+router.get('/signout', (req, res) => {
+  req.session.destroy(() => {
+    res.redirect('/')
+  })
 })
 
 

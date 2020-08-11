@@ -68,13 +68,13 @@ app.get('/', (req, res, next)=>{
   })
 
 
-const adopter = require('./routes/adopter.routes');
-app.use('/', adopter );
+const adopters = require('./routes/adopters.routes');
+app.use('/adopters', adopters);
 
-const shelterModel = require('./routes/shelter.routes');
-app.use('/', shelterModel );
+const shelters = require('./routes/shelters.routes');
+app.use('/shelters', shelters );
 
-const dogModel = require('./routes/shelter.routes');
-app.use('/', dogModel );
+const dogs = require('./routes/dogs.routes');
+app.use('/shelters/:id/dogs', dogs);
 
 module.exports = app;
