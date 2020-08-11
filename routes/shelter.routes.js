@@ -11,7 +11,6 @@ const adopterModel = require("../models/adopter.model");
 const dogModel = require("../models/dog.model");
 
 let CITIES = ['', 'Álava', 'Albacete','Alicante','Almería', 'Asturias','Ávila','Badajoz','Barcelona','Burgos','Cáceres','Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','A Coruña','Cuenca','Gerona','Granada','Guadalajara','Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra','Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona','Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'];
-
 let SIZE = ['','small', 'medium', 'large']
 
 //create and edit petprofile
@@ -74,6 +73,7 @@ router.get('/petprofile/:dogId/editdog', (req, res, next) => {
 
 router.post('/petprofile/:dogId/editdog', (req, res, next) => {
   // Update the dog profile
+
   const {
     shelter, name, age, size, description, cities, gender, goodwkids, goodwdogs, other
   } = req.body
@@ -87,10 +87,9 @@ router.post('/petprofile/:dogId/editdog', (req, res, next) => {
   .catch(() => res.redirect(`/petprofile/${req.params.dogId}/edit`))
 });
 
-//delete un post sencillo
+//delete a dog
 
 router.get('/petprofile/:dogId/deletedog', (req, res, next) => {
-  // delete a dog
   dogModel.findByIdAndDelete(
     {_id: req.params.dogId}
   )
@@ -99,7 +98,8 @@ router.get('/petprofile/:dogId/deletedog', (req, res, next) => {
 });
 
 
-//doing the filter from the shelter, still need do it from the adopter as well
+//doing the filter from the shelter
+
 router.get('/shelter/find-dog', (req, res) => {
   res.render('find-dog.hbs', {CITIES:CITIES,Size:SIZE})
 })
@@ -131,6 +131,23 @@ router.post('/shelter/find-dog', (req, res) => {
 
 //edit shelter profile
 
+router.get('/shelter/editshelter', (req, res) => {
+  res.render('editshelter.hbs', {shelter: req.session.loggedInUser})
+})
+
+
+
+router.post("/shelter/editshelter", (req, res) => {
+  let shelterData = req.session.loggedInUser
+
+  console.log(req.body)
+  shelterModel.findByIdAndUpdate( shelterData._id, {$set: req.body})
+    .then(() => {
+      res.redirect('/shelter')    
+      })
+
+})
+
 
 //delete shelter profile
 
@@ -139,13 +156,9 @@ router.post('/shelter/:id/deleteshelter', (req, res, next) => {
   shelterModel.findByIdAndDelete(id)
     .then(() => res.redirect('/shelter'))
     .catch((err) => {
-      console.log(`Error while deleting a movie: ${err}`);
+      console.log(`Error while deleting: ${err}`);
       next();
     });
 });
-
-
-
-
 
 module.exports = router;

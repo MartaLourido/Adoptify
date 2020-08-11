@@ -58,7 +58,6 @@ app.use('/', index);
 const authRouter = require('./routes/auth.routes');
 app.use('/', authRouter);
 
-
 app.get('/', (req, res, next)=>{
     if(req.session.loggedInUser === true){
       next()

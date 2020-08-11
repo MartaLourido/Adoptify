@@ -17,45 +17,31 @@
 <form method="POST" action='/shelter/editshelter'>
   <div class="form-group">
     <label for="formGroup1">Name</label>
-    <input type="text" name="name" class="form-control" id="formGroup1" placeholder="Name" value = "{{shelter.name}}">
+    <input type="text" class="form-control" id="formGroup1" placeholder="ame" value = "{{shelter.name}}">
   </div>
   <div class="form-group">
-    <label for="formGroup2">Age</label>
-    <input type="text" class="form-control" id="formGroup2" placeholder="Add the age" value = "{{dog.age}}">
+    <label for="formGroup2">Email</label>
+    <input type="text" class="form-control" id="formGroup2" placeholder="Change your email" value = "{{shelter.email}}">
+  </div>
+  <div class="form-group">
+    <label for="formGroup2">Contact person</label>
+    <input type="text" class="form-control" id="formGroup2" placeholder="How is responsible in the shelter?" value = "{{shelter.contactPerson}}">
+  </div>
+<div class="form-group">
+    <label for="formGroup4">City</label>
+    <input type="text" name="city" class="form-control" id="formGroup4" placeholder="Add more information" value = "{{shelter.city}}">
   </div>
    <div class="form-group">
-    <label for="formGroup3">Size</label> 
-    <select class="form-control" name= "Size"> 
-     <option value="1">Small</option>
-     <option value="2">Medium</option>
-     <option value="3">Large</option>
-    </select> 
+    <label for="formGroup4">About us</label>
+    <input type="text" name="aboutUs" class="form-control" id="formGroup4" placeholder="Add more information" value = "{{shelter.aboutUs}}">
   </div>
    <div class="form-group">
-    <label for="formGroup3">Description</label>
-    <input type="text" class="form-control" id="formGroup3" placeholder="Write a description"  value = "{{shelter.description}}">
+    <label for="formGroup7">Other</label>
+    <input type="text" name="other" class="form-control" id="formGroup7" placeholder="Add more information" value = "{{shelter.other}}">
   </div>
-   <div class= "form-group">
-  <select class="form-control" name = "location"> 
-   {{#each  CITIES}}
-   <option value="{{this}}">{{this}}</option>
-   {{/each}}
-  </select>
-  </div>
-  <div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck1">
-  <label class="custom-control-label" for="customCheck1">Good with kids</label>
-  </div>
-  <div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck1">
-  <label class="custom-control-label" for="customCheck1">Good with dogs</label>
-  </div>
-   <div class="form-group">
-    <label for="formGroup4">Other</label>
-    <input type="text" class="form-control" id="formGroup4" placeholder="Add more information" value = "{{dog.information}}">
-  </div>
-
+<button id = "del-btn" class="btn btn-danger">Submit</button>
 </form>
+
 {{#if errorMessage}}
   <div class="error">{{errorMessage}}</div>
 {{/if}} 
