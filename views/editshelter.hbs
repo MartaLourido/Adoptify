@@ -1,13 +1,61 @@
 <h2>Edit a Shelter profile</h2>
 
-<form action="/shelter/{{_id}}/edit" method="POST">
+
+{{!-- <form action="/shelter/{{_id}}/edit" method="POST">
   <label for="name-input">name</label>
   <input type="text" name="name" id="name-input" value="{{shelter.name}}">
   <br>
 
   <label for="location-input">location</label>
-  <input type="text" name="location" id="location-input" value="{{shelter.city}}">
+  <input type="text" name="city" id="cityinput" value="{{shelter.city}}">
   <br>
 
   <button type="submit">Save Changes</button>
-</form> 
+</form>  --}}
+
+
+<form method="POST" action='/shelter/editshelter'>
+  <div class="form-group">
+    <label for="formGroup1">Name</label>
+    <input type="text" name="name" class="form-control" id="formGroup1" placeholder="Name" value = "{{shelter.name}}">
+  </div>
+  <div class="form-group">
+    <label for="formGroup2">Age</label>
+    <input type="text" class="form-control" id="formGroup2" placeholder="Add the age" value = "{{dog.age}}">
+  </div>
+   <div class="form-group">
+    <label for="formGroup3">Size</label> 
+    <select class="form-control" name= "Size"> 
+     <option value="1">Small</option>
+     <option value="2">Medium</option>
+     <option value="3">Large</option>
+    </select> 
+  </div>
+   <div class="form-group">
+    <label for="formGroup3">Description</label>
+    <input type="text" class="form-control" id="formGroup3" placeholder="Write a description"  value = "{{shelter.description}}">
+  </div>
+   <div class= "form-group">
+  <select class="form-control" name = "location"> 
+   {{#each  CITIES}}
+   <option value="{{this}}">{{this}}</option>
+   {{/each}}
+  </select>
+  </div>
+  <div class="custom-control custom-checkbox">
+  <input type="checkbox" class="custom-control-input" id="customCheck1">
+  <label class="custom-control-label" for="customCheck1">Good with kids</label>
+  </div>
+  <div class="custom-control custom-checkbox">
+  <input type="checkbox" class="custom-control-input" id="customCheck1">
+  <label class="custom-control-label" for="customCheck1">Good with dogs</label>
+  </div>
+   <div class="form-group">
+    <label for="formGroup4">Other</label>
+    <input type="text" class="form-control" id="formGroup4" placeholder="Add more information" value = "{{dog.information}}">
+  </div>
+
+</form>
+{{#if errorMessage}}
+  <div class="error">{{errorMessage}}</div>
+{{/if}} 
