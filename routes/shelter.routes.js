@@ -90,7 +90,7 @@ router.post('/petprofile/:dogId/editdog', (req, res, next) => {
 
 //delete un post sencillo
 
-router.get('/petprofile/:dogId/deletedog', (req, res, next) => {
+router.get('/petprofile/deletedog/:dogId', (req, res, next) => {
   // delete a dog
   dogModel.findByIdAndDelete(
     {_id: req.params.dogId}
@@ -107,10 +107,19 @@ router.get('/shelter/find-dog', (req, res) => {
 
 router.post('/shelter/find-dog', (req, res) => {
   const {city, size} = req.body;
-  dogModel.find({city: city, size: size})
+  let filter ={}; //creo objeto vacio
+  if(city !=''){  //si la ciudad esta vacia salen todos los perros
+    filter.city=city;
+  }
+  if(size !=''){
+    filter.size=size;
+  }
+  dogModel.find(
+    filter
+    )
   .then ((result) => {
   console.log(result)
-    res.render('find-dog.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,size:SIZE, dogs: result});
+    res.render('find-dog.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,Size:SIZE, dogs: result});
   })
 })
 

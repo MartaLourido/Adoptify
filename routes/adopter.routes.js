@@ -88,6 +88,7 @@ router.post('/adopter/find-dogadopter', (req, res) => {
 })
 
 
+
 /*
 router.get('/adopter/find-dogadopter', (req, res) => {
   console.log('pasa por aqui');
