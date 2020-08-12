@@ -46,14 +46,14 @@ router.post('/signup', (req, res) => {
                   case '1': //adopter, definido en el signin.hbs
                     adopterModel.create({username, email, passwordHash: hashPass, name, city })
                     .then(() => {
-                      res.redirect('/adopter/:id') //ruta a la pagina de tu usuario se ha creado correctamente
+                      res.redirect('/adopters/:id') //ruta a la pagina de tu usuario se ha creado correctamente
                     })
                     break;
         
                   case '2': //shelter, definido en el sigin.hbs
                     shelterModel.create({username, email, passwordHash: hashPass, name, city })
                     .then(() => {
-                      res.redirect('/shelter(:id')
+                      res.redirect('/shelters/:id')
                     })
                     break;
                 

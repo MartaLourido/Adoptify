@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 })
 
 
-//edit shelter profile
+// EDIT SHELTER
 
 router.get('/edit', (req, res) => {
   res.render('editshelter.hbs', {loggedInUser:req.session.loggedInUser, shelter: req.session.loggedInUser})
@@ -36,7 +36,7 @@ router.post("/edit", (req, res) => {
 })
 
 
-//delete shelter profile
+// DELETE SHELTER
 
 router.get('/:id/delete', (req, res, next) => {
   const { id } = req.params;
@@ -48,24 +48,34 @@ router.get('/:id/delete', (req, res, next) => {
     });
 });
 
-//doing the filter from the shelter
+// SHELTER FILTER
 
+// SHELTER FILTER
 router.get('/find-dog', (req, res) => {
   res.render('find-dog.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,Size:SIZE})
 })
 
 router.post('/find-dog', (req, res) => {
   const {city, size} = req.body;
-  dogModel.find({city: city, size: size})
+  let filter ={}; //creo objeto vacio, si la ciudad y el size estan vacios salen todos los perros
+  if(city !=''){  
+    filter.city=city;
+  }
+  if(size !=''){
+    filter.size=size;
+  }
+  dogModel.find(
+    filter
+    )
   .then ((result) => {
   console.log(result)
-    res.render('find-dog.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,size:SIZE, dogs: result});
+    res.render('find-dog.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,Size:SIZE, dogs: result});
   })
 })
 
-//obteniendo el dogprofile por id
+// ID DOGPROFILE
 
-router.get('/dogprofile/:dogId', (req, res) => {
+router.get('/pet-profile/:dogId', (req, res) => {
   dogModel.findById(req.params.dogId) 
   .then ((dog) => { 
     res.render ('dogprofile.hbs', {loggedInUser:req.session.loggedInUser, dog: dog})

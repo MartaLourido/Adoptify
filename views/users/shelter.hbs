@@ -1,17 +1,17 @@
 <h1>This is the shelter profile</h1>
 <h3>your information</h3>
+<div>
 <p>Name: {{shelter.name}}</p>
 <p>City: {{shelter.city}}</p>
 <p>Email: {{shelter.email}}</p>
-<p>Contact Person: {{shelter.contactPerson}} </p>
+<p>Contact Person: {{shelters.contactPerson}} </p>
 <p>Address: {{shelter.address}} </p>
-
 </div>
 
-<a href="/shelter/find-dog"><button id = "del-btn" class="btn btn-danger">Find dogs</button></a>
-<a href="/shelter/myrequests"><button id = "del-btn" class="btn btn-danger">Requests</button></a> 
-<a href="/shelter/edit"><button id = "del-btn" class="btn btn-danger">Edit</button></a> 
-<a href="/shelter/delete{{shelter._id}}"><button id = "del-btn" class="btn btn-danger">Delete</button></a>
-<a href="/dogprofile/create"><button id = "del-btn" class="btn btn-danger">Create dog</button></a>
+<a href="/shelters/find-dog"><button id = "del-btn" class="btn btn-danger">Find dogs</button></a>
+<a href="/shelters/myrequests"><button id = "del-btn" class="btn btn-danger">Requests</button></a> 
+<a href="/shelters/edit"><button id = "del-btn" class="btn btn-danger">Edit</button></a> 
+<a href="/shelters/{{shelter._id}}/delete"><button id = "del-btn" class="btn btn-danger">Delete</button></a>
+<a href="/pet-profile/create"><button id = "del-btn" class="btn btn-danger">Create dog</button></a>
 <a href="/yourdogs"><button id = "del-btn" class="btn btn-danger">Your dogs</button></a>
 

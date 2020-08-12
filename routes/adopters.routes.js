@@ -56,7 +56,7 @@ router.get('/find-dogadopter', (req, res) => {
 
 router.post('/find-dogadopter', (req, res) => {
   const {city, size} = req.body;
-  let filter ={}; //creo objeto vacio, si la ciudad y el size estan vacios salen todos los perros
+  let filter ={}; // VOID OBJECT, THAT WAY ALLOWS THE FINDER TO SHOW ALL THE DOGS WHEN SEARCH IS PUSH
   if(city !=''){  
     filter.city=city;
   }

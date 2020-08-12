@@ -4,3 +4,20 @@
 <p>{{dog.shelter}}</p>
 <p>{{dog.name}}</p>
 <p>{{dog.age}}</p>
+
+
+  {{#each dogs}}
+<div class="card" style="width: 18rem;">
+  <img src={{this.image}} style= "width: 18rem;" class="card-img-top" alt="...">
+  <div class="card-body">
+  © <h5 class="card-title">{{dog.name}}</h5>
+    <p class="card-text">{{dog.description}}</p>
+    <a href="/petprofile/viewprofile/{{dog._id}}" class="btn btn-primary">See this dog!</a>
+  </div>
+</div>
+{{/each}}
+</main>
+
+{{#if errorMessage}}
+  <div class="error">{{errorMessage}}</div>
+{{/if}} 
