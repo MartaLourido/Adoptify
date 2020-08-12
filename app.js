@@ -50,29 +50,28 @@ app.use(session({
   })
 }));
 
-
-//Routes middleware
-const index = require('./routes/index.routes');
-app.use('/', index);
-
 const authRouter = require('./routes/auth.routes');
 app.use('/', authRouter);
 
-app.get('/', (req, res, next)=>{
-    if(req.session.loggedInUser === true){
+const index = require('./routes/index.routes');
+app.use('/', index);
+
+app.all('*', (req, res, next)=>{
+  console.log(req.session.loggedInUser);
+  console.log('patata');
+    if(req.session.loggedInUser){
       next()
     }
     else{
-      res.render('index.hbs')
+      res.redirect('/')
     }
   })
-
 
 const adopters = require('./routes/adopters.routes');
 app.use('/adopters', adopters);
 
 const shelters = require('./routes/shelters.routes');
-app.use('/shelters', shelters );
+app.use('/shelters', shelters);
 
 const dogs = require('./routes/dogs.routes');
 app.use('/shelters/:id/dogs', dogs);

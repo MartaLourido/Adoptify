@@ -13,7 +13,6 @@ let CITIES = ['', 'Álava', 'Albacete','Alicante','Almería', 'Asturias','Ávila
 let SIZE = ['', 'small', 'medium', 'large']
 
 
-
 router.get('/', (req, res) => {
   adopterModel.findById(req.session.loggedInUser._id)
         .then((adopter) => {
@@ -23,6 +22,7 @@ router.get('/', (req, res) => {
         }) 
 })
 
+// EDIT ADOPTER PROFILE 
 router.get('/edit', (req, res) => {
   res.render('editadopter.hbs', {loggedInUser:req.session.loggedInUser, adopter: req.session.loggedInUser})
 })
@@ -32,12 +32,13 @@ router.post("/edit", (req, res) => {
   console.log(req.body)
   adopterModel.findByIdAndUpdate( adopterData._id, {$set: req.body})
     .then(() => {
-      res.redirect('/')    
+      res.redirect('/adopters')    
       })
 })
 
+// DELETE PROFILE 
 
-router.delete('/:id', (req, res) => {
+router.get('/:id/delete', (req, res) => {
   const {id} = req.params;
   adopterModel.findByIdAndDelete(id)
     .then(() => res.redirect('/signout')) //doing logout when you delete it
@@ -47,12 +48,13 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+// REDIRECT TO FINDER FOR ADOPTER 
 
-router.get('/findadoption', (req, res) => {
+router.get('/find-dogadopter', (req, res) => {
   res.render('find-dogadopter.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,Size:SIZE})
 })
 
-router.post('/findadoption', (req, res) => {
+router.post('/find-dogadopter', (req, res) => {
   const {city, size} = req.body;
   dogModel.find({city: city, size: size})
   .then ((result) => {

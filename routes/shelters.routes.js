@@ -6,7 +6,6 @@ const bcryptjs = require('bcryptjs')
 const shelterModel = require("../models/shelter.model");
 //const for require adopter model
 const adopterModel = require("../models/adopter.model");
-
 //const for require dog model
 const dogModel = require("../models/dog.model");
 
@@ -14,21 +13,24 @@ let CITIES = ['', 'Álava', 'Albacete','Alicante','Almería', 'Asturias','Ávila
 let SIZE = ['','small', 'medium', 'large']
 
 
+router.get('/', (req, res) => {
+  res.render('users/shelter.hbs', {loggedInUser: req.session.loggedInUser});
+})
+
+
 //edit shelter profile
 
-router.get('/shelter/editshelter', (req, res) => {
+router.get('/edit', (req, res) => {
   res.render('editshelter.hbs', {loggedInUser:req.session.loggedInUser, shelter: req.session.loggedInUser})
 })
 
-//edit profile
-
-router.post("/shelter/editshelter", (req, res) => {
+router.post("/edit", (req, res) => {
   let shelterData = req.session.loggedInUser
 
   console.log(req.body)
   shelterModel.findByIdAndUpdate( shelterData._id, {$set: req.body})
     .then(() => {
-      res.redirect('/shelter')    
+      res.redirect('/shelters')    
       })
 
 })
@@ -36,7 +38,7 @@ router.post("/shelter/editshelter", (req, res) => {
 
 //delete shelter profile
 
-router.get('/shelter/deleteshelter/:id', (req, res, next) => {
+router.get('/:id/delete', (req, res, next) => {
   const { id } = req.params;
   shelterModel.findByIdAndDelete(id)
     .then(() => res.redirect('/signout'))
@@ -48,11 +50,11 @@ router.get('/shelter/deleteshelter/:id', (req, res, next) => {
 
 //doing the filter from the shelter
 
-router.get('/shelter/find-dog', (req, res) => {
+router.get('/find-dog', (req, res) => {
   res.render('find-dog.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,Size:SIZE})
 })
 
-router.post('/shelter/find-dog', (req, res) => {
+router.post('/find-dog', (req, res) => {
   const {city, size} = req.body;
   dogModel.find({city: city, size: size})
   .then ((result) => {
@@ -61,27 +63,12 @@ router.post('/shelter/find-dog', (req, res) => {
   })
 })
 
-/*
-router.post('/shelter/find-dog', (req, res) => {
-  const {city, size} = req.body;
-  console.log(req.body);
-  shelterModel.find({city: city})
-    .then((shelters) => {
-        let shelterIds = shelters.map((shelter) => shelter._id)
-        dogModel.find({shelter: {$in : shelterIds}}) //if dog is from that shelter
-        .then((dogs) => {
-          res.render('find-dog.hbs', {CITIES:CITIES,size:SIZE, dogs})
-        })
-    })
- 
-})
-*/
+//obteniendo el dogprofile por id
 
-//obteniendo el pet profile por id
-router.get('/petprofile/:dogId', (req, res) => {
+router.get('/dogprofile/:dogId', (req, res) => {
   dogModel.findById(req.params.dogId) 
   .then ((dog) => { 
-    res.render ('petprofile.hbs', {loggedInUser:req.session.loggedInUser, dog: dog})
+    res.render ('dogprofile.hbs', {loggedInUser:req.session.loggedInUser, dog: dog})
   })
 
 })

@@ -36,7 +36,7 @@ router.post('/create', (req, res) => {
 router.get('/:dogId', (req, res) => {
   dogModel.findById(req.params.dogId) 
   .then ((dog) => { 
-    res.render ('petprofile.hbs', {loggedInUser:req.session.loggedInUser, dog: dog})
+    res.render ('dogprofile.hbs', {loggedInUser:req.session.loggedInUser, dog: dog})
   })
 })
  
