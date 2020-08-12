@@ -1,13 +1,13 @@
 
 /* BASIC */
 
-html {
-  background-color:   white;
-}
-
 body {
+  background-color: white;
   font-family: "Helvetica", sans-serif;
-  height: 100vh;
+  height: 50vh;
+  width:10%;
+  margin-left: 0;
+  margin-right:auto;
 }
 
 a {
