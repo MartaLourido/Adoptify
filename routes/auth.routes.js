@@ -45,15 +45,17 @@ router.post('/signup', (req, res) => {
                 switch (signupType) {  //choose(sigin.hbs)
                   case '1': //adopter, definido en el signin.hbs
                     adopterModel.create({username, email, passwordHash: hashPass, name, city })
-                    .then(() => {
-                      res.redirect('/adopters/:id') //ruta a la pagina de tu usuario se ha creado correctamente
+                    .then((userData) => {
+                      req.session.loggedInUser = userData;
+                      res.redirect('/adopters') //ruta a la pagina de tu usuario se ha creado correctamente
                     })
                     break;
         
                   case '2': //shelter, definido en el sigin.hbs
                     shelterModel.create({username, email, passwordHash: hashPass, name, city })
-                    .then(() => {
-                      res.redirect('/shelters/:id')
+                    .then((userData) => {
+                      req.session.loggedInUser = userData;
+                      res.redirect('/shelters')
                     })
                     break;
                 

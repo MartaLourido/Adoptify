@@ -53,11 +53,23 @@ router.get('/:id/delete', (req, res, next) => {
     });
 });
 
-// SHELTER FILTER
+// SHOW YOUR DOGS
+
+router.get('/yourdogs', (req, res) => {
+  console.log(req.session.loggedInUser);
+  dogModel.find({shelter: req.session.loggedInUser._id})
+  .then((dogs) => {
+    console.log(dogs)
+    let message;
+    if (dogs.length === 0) message = "There are no dogs in your shelter!"
+    res.render('yourdogs.hbs', {loggedInUser:req.session.loggedInUser, dogs, message})
+  })
+  .catch((err) => console.log(err))
+})
 
 // SHELTER FILTER
 router.get('/find-dog', (req, res) => {
-  res.render('find-dog.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,Size:SIZE})
+  res.render('yourdogs.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,Size:SIZE})
 })
 
 router.post('/find-dog', (req, res) => {
