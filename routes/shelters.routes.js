@@ -22,7 +22,6 @@ router.get('/', (req, res) => {
   
 })
 
-
 // EDIT SHELTER
 
 router.get('/edit', (req, res) => {

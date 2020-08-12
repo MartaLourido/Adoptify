@@ -42,7 +42,16 @@ router.get('/:dogId', (req, res) => {
   .populate('shelter')
   .then ((dog) => { 
     //console.log('Dog is', dog)
-    res.render ('dogprofile.hbs', {loggedInUser:req.session.loggedInUser, dog: dog})
+    let userData = req.session.loggedInUser;
+    console.log(userData)
+    if(userData.aboutUs){
+      userData.loginType = '2';
+    }
+        else{
+
+          userData.loginType = '1';
+        }
+    res.render ('dogprofile.hbs', {loggedInUser:userData, dog: dog})
   })
 })
  
@@ -78,6 +87,17 @@ router.get('/:dogId/delete', (req, res, next) => {
   .then(() => res.redirect('/shelters'))
   .catch(() => res.redirect(`/shelters/${req.session.loggedInUser._id}/dogs/${req.params.dogId}/edit`))
 });
+
+//Adopt me
+
+router.get('/:dogId/adoptme', (req, res, next) => {
+  dogModel.findByIdAndDelete(
+    {_id: req.params.dogId}
+  )
+  .then(() => res.render('adoptme.hbs'))
+  .catch(() => res.redirect(`/shelters/${req.session.loggedInUser._id}/dogs/${req.params.dogId}/edit`))
+});
+
 
 // LIST OF DOGS FOR A PARTICULAR SHELTER
 router.get('/doglist', (req, res) => {

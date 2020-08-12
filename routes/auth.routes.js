@@ -99,6 +99,7 @@ router.post('/signin', (req, res) => {
       console.log(doesItMatch);
       if (doesItMatch){  
         // loggedInUser = userData
+        userData.loginType = loginType;
         req.session.loggedInUser = userData;
         res.redirect('/adopters'); //nombre de la ruta
       }
@@ -121,8 +122,10 @@ router.post('/signin', (req, res) => {
       console.log(doesItMatch);
       if (doesItMatch){  
         // loggedInUser = userData
+        userData.loginType = loginType;
         req.session.loggedInUser = userData;
         res.redirect('/shelters'); //nombre de la ruta
+        
       }
       else { //password does not exist  
         res.status(500).render('auth/signin.hbs', {errorMessage: 'Passwords do not match'})

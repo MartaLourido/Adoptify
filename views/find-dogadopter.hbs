@@ -1,5 +1,5 @@
 <a href="/"><button id = "del-btn" class="btn btn-danger">Home</button></a>
-<a href="/adopters"><button id = "del-btn" class="btn btn-danger">Go back<button></a>  
+<a href="/shelters"><button id = "del-btn" class="btn btn-danger">Go back<button></a>  
 
 <h1>Search for a sheltered dog!</h1>
     <form method="post" action="/adopters/find-dogadopter" class="form-inline my-2 my-lg-0">
@@ -21,13 +21,13 @@
   </div>
 </nav>
 <main>
-  {{#each dogs}}
+{{#each dogs}}
 <div class="card" style="width: 18rem;">
-  <img src={{this.image}} style= "width: 18rem;" class="card-img-top" alt="">
+  <img src={{this.image}} style= "width: 18rem;" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">{{this.name}}</h5>
+   <h5 class="card-title">{{this.name}}</h5>
     <p class="card-text">{{this.description}}</p>
-    <a href="/shelters/dogs/{{this._id}}" class="btn btn-primary">See this dog!</a>
+    <a href="/shelters/{{this.shelter}}/dogs/{{this._id}}" class="btn btn-primary">See this dog!</a>
   </div>
 </div>
 {{/each}}

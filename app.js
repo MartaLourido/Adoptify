@@ -12,6 +12,13 @@ const cookieParser = require('cookie-parser');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
 
+//configuracion de if condicional para dos variables utilizado en dogprofile
+hbs.registerHelper('ifCond', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
 
 // Set up the database
 require('./configs/db.config');

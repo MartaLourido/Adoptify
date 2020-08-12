@@ -8,5 +8,11 @@
 </div>
 
 <a href="/"><button id = "del-btn" class="btn btn-danger">Home</button></a>
+{{#ifCond loggedInUser.loginType '2'}}
 <a href="/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/edit"><button id = "del-btn" class="btn btn-danger">Edit</button></a> 
 <a href="/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/delete"><button id = "del-btn" class="btn btn-danger">Delete</button></a>
+{{/ifCond}}
+
+{{#ifCond loggedInUser.loginType '1'}}
+<a href="/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/adoptme"><button id = "del-btn" class="btn btn-danger">Adopt me!</button></a> 
+{{/ifCond}}
