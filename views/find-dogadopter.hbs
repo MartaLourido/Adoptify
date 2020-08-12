@@ -1,9 +1,4 @@
 <h1>Search for a sheltered dog!</h1>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand">Find a dog!</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
     <form method="post" action="/adopters/find-dogadopter" class="form-inline my-2 my-lg-0">
       <label for="city">Cities</label>
       <select class="form-control" name= "city"> 
@@ -25,12 +20,15 @@
 <main>
   {{#each dogs}}
 <div class="card" style="width: 18rem;">
-  <img src={{this.image}} style= "width: 18rem;" class="card-img-top" alt="...">
+  <img src={{this.image}} style= "width: 18rem;" class="card-img-top" alt="">
   <div class="card-body">
-    <h5 class="card-title">{{dog.name}}</h5>
-    <p class="card-text">{{dog.description}}</p>
-    <a href="/petprofile/{{dog._id}}/adopt-me"></a><a href="#" class="btn btn-primary">See this dog!</a>
+    <h5 class="card-title">{{this.name}}</h5>
+    <p class="card-text">{{this.description}}</p>
+    <a href="/shelters/dogs/{{this._id}}" class="btn btn-primary">See this dog!</a>
   </div>
 </div>
 {{/each}}
-</main>
+
+{{#if errorMessage}}
+  <div class="error">{{errorMessage}}</div>
+{{/if}} 
