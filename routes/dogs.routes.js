@@ -20,14 +20,14 @@ router.get('/create', (req, res) => {
 
 router.post('/create', (req, res) => {
   let {
-    name, age, size, description, city, gender, goodwkids, goodwdogs, other
+    name, age, size, description, city, gender, goodwkids, goodwdogs, other, image
   } = req.body
   console.log(goodwdogs, goodwkids)
   goodwdogs === undefined ? goodwdogs = false : null
   goodwkids === undefined ? goodwkids = false : null
   console.log(goodwdogs, goodwkids)
   //console.log(req.body)
-  dogModel.create ({shelter: req.session.loggedInUser._id, name, age, size, description, city, gender, goodwkids, goodwdogs, other})
+  dogModel.create ({shelter: req.session.loggedInUser._id, name, age, size, description, city, gender, goodwkids, goodwdogs, other, image})
   .then ((dog) =>
     res.redirect(`/shelters/${req.session.loggedInUser._id}/dogs/${dog._id}`)
   )
@@ -64,7 +64,7 @@ router.get('/:dogId/edit', (req, res, next) => {
 })
 router.post('/:dogId/edit', (req, res, next) => {
   let {
-    name, age, size, description, city, gender, goodwkids, goodwdogs, other
+    name, age, size, description, city, gender, goodwkids, goodwdogs, other, image
   } = req.body
   console.log(req.body)
   goodwdogs === undefined ? goodwdogs = false : null
@@ -72,7 +72,7 @@ router.post('/:dogId/edit', (req, res, next) => {
   dogModel.findByIdAndUpdate(
     {_id: req.params.dogId},
     {
-      name, age, size, description, city, gender, goodwkids, goodwdogs, other
+      name, age, size, description, city, gender, goodwkids, goodwdogs, other, image
     }
   )
   .then(() => res.redirect(`/shelters/${req.session.loggedInUser._id}/dogs/${req.params.dogId}`) )
