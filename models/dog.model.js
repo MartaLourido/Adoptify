@@ -45,6 +45,9 @@ const dogSchema = new Schema({
     },
     age: {
       type: Number
+    },
+    image: {
+      type: String
     }
  
   },

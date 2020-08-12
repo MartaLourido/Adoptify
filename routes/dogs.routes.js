@@ -75,7 +75,7 @@ router.get('/:dogId/delete', (req, res, next) => {
   dogModel.findByIdAndDelete(
     {_id: req.params.dogId}
   )
-  .then(() => res.redirect('/shelter'))
+  .then(() => res.redirect('/shelters'))
   .catch(() => res.redirect(`/shelters/${req.session.loggedInUser._id}/dogs/${req.params.dogId}/edit`))
 });
 
@@ -86,5 +86,11 @@ router.get('/doglist', (req, res) => {
   res.render('doglist.hbs', {dogs})
 })
 })
+
+//see the dog button 
+
+// router.get('/petprofile/viewprofile/:dogId', (req, res) => {
+//   res.redirect('/:dogId)
+// });
 
 module.exports = router;
