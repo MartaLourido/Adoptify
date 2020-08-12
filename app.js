@@ -57,7 +57,7 @@ const index = require('./routes/index.routes');
 app.use('/', index);
 
 app.all('*', (req, res, next)=>{
-  console.log(req.session.loggedInUser);
+  //console.log(req.session.loggedInUser);
   console.log('patata');
     if(req.session.loggedInUser){
       next()

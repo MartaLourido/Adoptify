@@ -1,7 +1,7 @@
 <h1>This is the dog profile</h1>
-<p>{{dog.shelter}}</p>
+<p>{{dog.shelter.name}}</p>
 <p>{{dog.name}}</p>
 <p>{{dog.age}}</p>
 
-<a href="/pet-profile/{{dog._id}}/edit"><button id = "del-btn" class="btn btn-danger">Edit</button></a> 
-<a href="/pet-profile/{{dog._id}}/delete"><button id = "del-btn" class="btn btn-danger">Delete</button></a>
+<a href="/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/edit"><button id = "del-btn" class="btn btn-danger">Edit</button></a> 
+<a href="/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/delete"><button id = "del-btn" class="btn btn-danger">Delete</button></a>

@@ -1,47 +1,48 @@
-<form method="POST" action='/pet-profile/edit'>
+<form method="POST" action='/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/edit'>
   <div class="form-group">
     <label for="formGroup1">Name</label>
-    <input type="text" class="form-control" id="formGroup1" placeholder="Name" value = "{{dog.name}}">
+    <input name="name" type="text" class="form-control" id="formGroup1" placeholder="Name" value = "{{dog.name}}">
   </div>
   <div class="form-group">
     <label for="formGroup2">Age</label>
-    <input type="text" class="form-control" id="formGroup2" placeholder="Add the age" value = "{{dog.age}}">
+    <input name="age"type="text" class="form-control" id="formGroup2" placeholder="Add the age" value = "{{dog.age}}">
   </div>
    <div class="form-group">
     <label for="formGroup3">Size</label> 
-    <select class="form-control" name= "Size"> 
-     <option value="1">Small</option>
-     <option value="2">Medium</option>
-     <option value="3">Large</option>
+    <select name="size" class="form-control" value="{{dog.size}}"> 
+     <option value="small">Small</option>
+     <option value="medium">Medium</option>
+     <option value="large">Large</option>
     </select> 
   </div>
    <div class="form-group">
     <label for="formGroup3">Description</label>
-    <input type="text" class="form-control" id="formGroup3" placeholder="Write a description"  value = "{{dog.description}}">
+    <input name="description" type="text" class="form-control" id="formGroup3" placeholder="Write a description"  value = "{{dog.description}}">
   </div>
    <div class= "form-group">
-  <select class="form-control" name = "location"> 
+  <select name="city" class="form-control" value="{{dog.city}}"> 
    {{#each  CITIES}}
    <option value="{{this}}">{{this}}</option>
    {{/each}}
   </select>
   </div>
 <div class="form-check">
-    <input class="form-check-input" type="checkbox" {{#if isChecked}}checked{{/if}} value="goodwkids" id="defaultCheck1" name = "goodwkids">
+    <input name="goodwkids" class="form-check-input" type="checkbox" {{#if dog.goodwkids}}checked{{/if}} value="true" id="defaultCheck1" name = "goodwkids">
       <label class="form-check-label" for="customCheck1">Good with kids</label>
   </div>
   <div class="form-check">
-    <input class="form-check-input" type="checkbox" {{#if isChecked}}checked{{/if}} value="goodwkids" id="defaultCheck1" name = "goodwdogs">
+    <input name="goodwdogs"class="form-check-input" type="checkbox" {{#if dog.goodwdogs}}checked{{/if}} value="true" id="defaultCheck1" name = "goodwdogs">
     <label class="form-check-label" for="customCheck1">Good with dogs</label>
   </div>
    <div class="form-group">
-    <label for="formGroup6">Other</label>
+    <label name="other" for="formGroup6">Other</label>
     <input type="text" class="form-control" id="formGroup6" placeholder="Add here more relevant information" name = "other">
   </div>
-   <div class="form-group">
+<!-- <div class="form-group">
     <label for="formGroup4">Other</label>
     <input type="text" class="form-control" id="formGroup4" placeholder="Add more information" value = "{{dog.information}}">
-  </div>
+  </div> -->
+ 
   <button type="submit">Save Changes</button>
 </form>
 {{#if errorMessage}}

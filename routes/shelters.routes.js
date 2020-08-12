@@ -14,7 +14,12 @@ let SIZE = ['','small', 'medium', 'large']
 
 
 router.get('/', (req, res) => {
-  res.render('users/shelter.hbs', {loggedInUser: req.session.loggedInUser});
+  shelterModel.findById(req.session.loggedInUser._id)
+    .then((user) => {
+      req.session.loggedInUser = user
+      res.render('users/shelter.hbs', {loggedInUser: req.session.loggedInUser});
+    })
+  
 })
 
 

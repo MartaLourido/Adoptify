@@ -37,7 +37,16 @@ const dogSchema = new Schema({
     image: {
       type: String
     },
-    
+    goodwkids: {
+      type: Boolean
+    },
+    goodwdogs: {
+      type: Boolean
+    },
+    age: {
+      type: Number
+    }
+ 
   },
   {
     timestamps: true

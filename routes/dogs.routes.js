@@ -15,17 +15,21 @@ let SIZE = ['','small', 'medium', 'large']
 
 //CREATE DOG PROFILE
 router.get('/create', (req, res) => {
-  res.render('dogcreate.hbs', {CITIES})
+  res.render('dogcreate.hbs', {CITIES, loggedInUser: req.session.loggedInUser})
 })
 
 router.post('/create', (req, res) => {
-  const {
+  let {
     name, age, size, description, city, gender, goodwkids, goodwdogs, other
   } = req.body
-  console.log(req.body)
-  dogModel.create ({shelter: req.session.loggedInUser._id, name, age, size, description, city, gender, goodwkids: goodwkids == 'on', goodwdogs: goodwdogs == 'on', other})
+  console.log(goodwdogs, goodwkids)
+  goodwdogs === undefined ? goodwdogs = false : null
+  goodwkids === undefined ? goodwkids = false : null
+  console.log(goodwdogs, goodwkids)
+  //console.log(req.body)
+  dogModel.create ({shelter: req.session.loggedInUser._id, name, age, size, description, city, gender, goodwkids, goodwdogs, other})
   .then ((dog) =>
-    res.redirect(`/${dog._id}`)
+    res.redirect(`/shelters/${req.session.loggedInUser._id}/dogs/${dog._id}`)
   )
   .catch((err) => {
     console.log('Error ', err)
@@ -35,7 +39,9 @@ router.post('/create', (req, res) => {
 // PERSONAL DOG PROFILE
 router.get('/:dogId', (req, res) => {
   dogModel.findById(req.params.dogId) 
+  .populate('shelter')
   .then ((dog) => { 
+    //console.log('Dog is', dog)
     res.render ('dogprofile.hbs', {loggedInUser:req.session.loggedInUser, dog: dog})
   })
 })
@@ -43,31 +49,34 @@ router.get('/:dogId', (req, res) => {
 // EDIT 
 router.get('/:dogId/edit', (req, res, next) => {
   dogModel.findById(req.params.dogId)
-    .then(dog => res.render('editdog.hbs',{loggedInUser:req.session.loggedInUser, dog: dog
+    .then(dog => res.render('editdog.hbs',{loggedInUser:req.session.loggedInUser, dog: dog, CITIES
     }))
     .catch(e => console.error(e))
 })
 router.post('/:dogId/edit', (req, res, next) => {
-  const {
-    shelter, name, age, size, description, cities, gender, goodwkids, goodwdogs, other
+  let {
+    name, age, size, description, city, gender, goodwkids, goodwdogs, other
   } = req.body
+  console.log(req.body)
+  goodwdogs === undefined ? goodwdogs = false : null
+  goodwkids === undefined ? goodwkids = false : null
   dogModel.findByIdAndUpdate(
-    {_dogId: req.params.dogId},
+    {_id: req.params.dogId},
     {
-      shelter, name, age, size, description, cities, gender, goodwkids, goodwdogs, other
+      name, age, size, description, city, gender, goodwkids, goodwdogs, other
     }
   )
-  .then(() => res.redirect(`/dogs/${req.params.dogId}`) )
-  .catch(() => res.redirect(`/dogs/${req.params.dogId}/edit`))
+  .then(() => res.redirect(`/shelters/${req.session.loggedInUser._id}/dogs/${req.params.dogId}`) )
+  .catch(() => res.redirect(`/shelters/${req.session.loggedInUser._id}/dogs/${req.params.dogId}/edit`))
 });
 
 //DELETE DOG
-router.delete('/:dogId', (req, res, next) => {
+router.get('/:dogId/delete', (req, res, next) => {
   dogModel.findByIdAndDelete(
     {_id: req.params.dogId}
   )
   .then(() => res.redirect('/shelter'))
-  .catch(() => res.redirect(`/dogs/${req.params.dogId}/edit`))
+  .catch(() => res.redirect(`/shelters/${req.session.loggedInUser._id}/dogs/${req.params.dogId}/edit`))
 });
 
 // LIST OF DOGS FOR A PARTICULAR SHELTER
