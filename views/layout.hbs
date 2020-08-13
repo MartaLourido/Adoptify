@@ -5,13 +5,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.js"  crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     </head>
     <body>
-      <div class='container-fluid'>
-        <div class='row'>
-          <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-            <a class="navbar-brand" href="#"><strong></strong></a>
+          <nav class="navbar navbar-expand-lg navbar-dark ">
+            <a class="navbar-brand" href="#"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>  
@@ -25,21 +23,39 @@
               <li class="nav-item active" id="to-left">
                 <a class="nav-link" href="/signin">Sign in</a>
               </li>
-            </ul>
-            {{/unless}}  
-            {{#if loggedInUser}} 
-            <form action='/signout' method='GET'>
-              <button class="btn btn-dark my-2 my-sm-0" type="submit">Sign out</button>
-            {{/if}}
-            </form>
+              {{/unless}}  
+              {{#if loggedInUser}} 
+              <li class="nav-item active" id="to-left">
+                <a class="nav-link" href="/signout">
+                <button class="btn btn-dark my-2 my-sm-0" type="button">Sign out</button>
+                </a>
+              </li>
+              {{/if}}
+              </ul>
             </div>
           </nav>
-        </div>
-      </div>
+     
+ 
 
             {{{body}}}
 
-            {{> footer}}
+           {{> footer}} 
+
+
+<!-- Footer -->
+<footer class="page-footer font-small pt-4 fixed-bottom myfooter">
+
+<div class="footertext">
+<h5 class="text-uppercase font-weight-bold">Adopt a shelter dog!</h5>
+<p>Every sign in here makes another dog happy</p>
+</div>
+
+<div class="view overlay z-depth-1-half">
+    <img src="/images/logo2.png" class="img-fluid" alt="LOGO ADOPTIFY">
+</div>
+      
+</footer>
+<!-- Footer -->
       
       
     </body>

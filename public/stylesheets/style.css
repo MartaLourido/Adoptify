@@ -1,5 +1,7 @@
 body {
   background-color: peachpuff;
+  background-image: url('https://images.squarespace-cdn.com/content/v1/5c36c8e9f407b455445146ce/1560793579744-GM9KQ37LOJRP8KWNZX3Z/ke17ZwdGBToddI8pDm48kPDUVSqrWjPMxE-ZvsjgIc17gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0hGaawTDWlunVGEFKwsEdnEU1PnaEfKGyE_TykhEcRahciWbM2_nO4JOvLrs9mDw8A/Cat-Dog+Background.jpg');
+  background-size: cover;
 }
 
 footer { 
@@ -20,4 +22,12 @@ footer {
 .footertext {
   display: flex;
   flex-direction: column;
+}
+
+.color-blue {
+  color: blue
+}
+
+form {
+  margin-bottom: 200px;
 }
