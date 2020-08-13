@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 //para trabajar con heroku 
-const MONGODB_URI = process.env.MONGO_URI || 'mongodb://localhost/adoptify';
+// const MONGODB_URI = process.env.MONGO_URI || 'mongodb://localhost/adoptify';
 // para trabajar con local
-// const MONGODB_URI = 'mongodb://localhost/adoptify';
+const MONGODB_URI = 'mongodb://localhost/adoptify';
 
 
 mongoose

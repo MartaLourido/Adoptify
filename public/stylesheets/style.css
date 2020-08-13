@@ -24,23 +24,41 @@ footer {
   display: flex;
   flex-direction: column;
 }
-
-.color-adoptify {
-  color:  #B55937;
+.color-blue {
+  color: peachpuff;
 }
 
 form {
   margin-bottom: 200px;
 }
 
+.positiondivsign {
+  margin-left: 0;
+}
+
+.flex-section {
+  display: flex;
+  justify-content: center;
+  
+}
+
 .profile-section {
   background-color: whitesmoke;
-  border-radius: 15px 50px 30px 5px;
+  border-radius: 0px 30px 30px 0px;
   opacity: 0.8;
-} 
+}
 
+.divbuttonfinder {
+  margin: 40px;
+}
+
+.editadopterform {
+  max-width: 600px;
+}
+  
 .form-group {
   margin: 30px 0px;
   background-color: whitesmoke;
   opacity: 0.9;
+  width: 500px !important;
 }
