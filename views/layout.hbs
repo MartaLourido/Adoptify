@@ -1,6 +1,6 @@
 
-  <html lang="en" class="full-height">
-    <head>
+<html lang="en" class="full-height">
+  <head>
     <script src="/javascripts/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.js"  crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -8,8 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     </head>
     <body>
-          <img src="/images/logo_size.jpg"/>  
-          <nav class="navbar navbar-expand-lg navbar-dark ">
+          <nav class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" href="#"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,10 +18,10 @@
               <ul class="navbar-nav mr-auto">   
               {{#unless loggedInUser}} 
               <li class="nav-item active" id="to-left">
-                <a class="nav-link" href="/signup">Sign up</a>
+                <a class="nav-link text-dark" href="/signup">Sign up</a>
               </li>
               <li class="nav-item active" id="to-left">
-                <a class="nav-link" href="/signin">Sign in</a>
+                  <a class="nav-link text-dark" href="/signin">Sign in</a>
               </li>
               {{/unless}}  
               {{#if loggedInUser}} 
@@ -59,7 +58,7 @@
 <!-- Footer -->
       
       
-    </body>
+  </body>
 
 </html>
     

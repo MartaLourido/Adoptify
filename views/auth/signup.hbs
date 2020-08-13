@@ -1,52 +1,61 @@
-<form method="POST" action="/signup">
-<div class="form-row">
-  <div class="form-group col-md-6">
-    <label for="inputEmail">Email</label>
-    <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Email">
-  </div>
-  <div class="form-group col-md-6">
-    <label for="inputPassword">Password</label>
-    <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password">
-  </div>
-</div>
-  
-<div class="col-auto">
-  <label class="sr-only" for="inputUser">Username</label>
-    <div class="input-group mb-2">
-    <div class="input-group-prepend">
-      <div class="input-group-text">@</div>
+<section class="flex-section form-dark"> 
+  <div class="profile-section positiondivsign card card-image" style="width: 28rem;">
+  <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4 align-center">
+  <form method="POST" action="/signup">
+  <div class="text-center">
+        <h3 class="text-dark mb-5 mt-4 font-weight-bold"><strong>SIGN</strong> 
+        <a class="text-dark font-weight-bold"><strong> UP</strong></a></h3>
+      </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail">Email</label>
+      <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Email">
     </div>
-  <input name="username" type="text" class="form-control" id="inputUser" placeholder="Username">
+    <div class="form-group col-md-6">
+      <label for="inputPassword">Password</label>
+      <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password">
+    </div>
+  </div>
+    
+  <div class="col-auto">
+    <label class="sr-only" for="inputUser">Username</label>
+      <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <div class="input-group-text">@</div>
+      </div>
+    <input name="username" type="text" class="form-control" id="inputUser" placeholder="Username">
+        </div>
+      </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input name="name" type="text" class="form-control" id="name" placeholder="Name adopter or shelter">
+    </div>
+    
+    <div class="form-row align-items-center">
+      <div class="col-auto my-1">
+        <label for="cities">City</label>
+        <select class="custom-select mr-sm-2" id="cities" name="city">
+          {{#each  CITIES}}
+            <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
       </div>
     </div>
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input name="name" type="text" class="form-control" id="name" placeholder="Name adopter or shelter">
-  </div>
-  
+
   <div class="form-row align-items-center">
-    <div class="col-auto my-1">
-      <label for="cities">City</label>
-      <select class="custom-select mr-sm-2" id="cities" name="city">
-        {{#each  CITIES}}
-          <option value="{{this}}">{{this}}</option>
-        {{/each}}
-      </select>
-    </div>
-  </div>
-
-<div class="form-row align-items-center">
-    <div class="col-auto my-1">
-      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">I am a</label>
-      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="signupType">
-        <option selected>Choose...</option>
-        <option value="1">Adopter</option>
-        <option value="2">Shelter</option>
-      </select>
-    </div>
-  <button type="submit" class="btn btn-primary">Sign up</button>
-</form>  
-
-{{#if errorMessage}}
-  <div class="error">{{errorMessage}}</div>
-{{/if}} 
+      <div class="col-auto my-1">
+        <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">I am a</label>
+        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="signupType">
+          <option selected>Choose...</option>
+          <option value="1">Adopter</option>
+          <option value="2">Shelter</option>
+        </select>
+      </div>
+    <button type="submit" class="btn btn-primary">Sign up</button>
+  </form>  
+</div>
+</div>
+  {{#if errorMessage}}
+    <div class="error">{{errorMessage}}</div>
+  {{/if}} 
+</section>

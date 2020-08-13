@@ -16,10 +16,11 @@ footer {
 
 .myfooter {
   display: flex;
-  justify-content: flex-end
+  justify-content: flex-end 
 }
 
 .footertext {
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
 }
