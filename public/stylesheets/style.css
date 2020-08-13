@@ -3,7 +3,21 @@ body {
 }
 
 footer { 
-  background-color: whitesmoke;
+  background-color: white;
   padding: 0;
   padding-top: 0;
+}
+
+.img-fluid {
+  max-height: 100px;
+}
+
+.myfooter {
+  display: flex;
+  justify-content: flex-end
+}
+
+.footertext {
+  display: flex;
+  flex-direction: column;
 }
