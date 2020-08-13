@@ -1,18 +1,29 @@
 
-<div class="card" style="width: 18rem;">
-  <img src={{dog.image}} style= "width: 18rem;" class="card-img-top" alt="...">
-  <div class="card-body">
-   <h5 class="card-title">{{dog.name}}</h5>
-    <p class="card-text">{{dog.description}}</p>
+<div class= "divbuttonfinder">
+  <a href="/adopters"><button type="button" class="btn btn-warning btn-rounded">Go back</button></a>
+  <a href="/"><button id = "del-btn" type="button" class="btn btn-warning btn-rounded">Home</button></a>
+
+  {{#ifCond loggedInUser.loginType '2'}}
+    <a href="/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/edit"><button id = "del-btn" class="btn btn-danger">Edit</button></a> 
+    <a href="/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/delete"><button id = "del-btn" class="btn btn-danger">Delete</button></a>
+  {{/ifCond}}
+
+  {{#ifCond loggedInUser.loginType '1'}}
+    <a href="/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/adoptme"><button id = "del-btn" type="button" class="btn btn-warning btn-rounded">Adopt me!</button></a> 
+  {{/ifCond}}
+
+</div>
+<div class="profile-section flex-section">
+  <div class="card" style="width: 18rem;">
+    <img src={{dog.image}} style= "width: 18rem;" class="card-img-top" alt="dog picture">
+    <div class="card-body">
+      <h4 class="card-title text-center">{{dog.name}}</h4>
+      <p class="card-text text-center">{{dog.age}}</p>
+      <p class="card-text text-center">{{dog.size}}</p>
+      <p class="card-text text-center">{{dog.description}}</p>
+
+    </div>
   </div>
 </div>
 
-<a href="/"><button id = "del-btn" class="btn btn-danger">Home</button></a>
-{{#ifCond loggedInUser.loginType '2'}}
-<a href="/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/edit"><button id = "del-btn" class="btn btn-danger">Edit</button></a> 
-<a href="/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/delete"><button id = "del-btn" class="btn btn-danger">Delete</button></a>
-{{/ifCond}}
 
-{{#ifCond loggedInUser.loginType '1'}}
-<a href="/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/adoptme"><button id = "del-btn" class="btn btn-danger">Adopt me!</button></a> 
-{{/ifCond}}
