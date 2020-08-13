@@ -8,6 +8,10 @@
     "dev": "nodemon ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": "12.18.3",
+    "npm": "6.14.7"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MartaLourido/Adoptify.git"

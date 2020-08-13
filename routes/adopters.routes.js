@@ -51,6 +51,7 @@ router.get('/:id/delete', (req, res) => {
 // REDIRECT TO FINDER FOR ADOPTER 
 
 router.get('/find-dogadopter', (req, res) => {
+
   res.render('find-dogadopter.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,Size:SIZE})
 })
 
@@ -67,7 +68,7 @@ router.post('/find-dogadopter', (req, res) => {
     filter
     )
   .then ((result) => {
-  console.log(result)
+  
     res.render('find-dogadopter.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,Size:SIZE, dogs: result});
   })
 })

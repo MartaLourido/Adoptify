@@ -24,6 +24,7 @@ const app = express();
 // Express View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+//app.use(express.static("public"))
 app.use(express.static(path.join(__dirname, 'public')));
 
 // setting up the middleware to let it know where to find the favicon icon

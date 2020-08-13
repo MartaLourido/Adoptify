@@ -1,25 +1,20 @@
 <section class="form-dark">
-
 <div class="card card-image align-center"
-    style="background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table7.jpg'); width: 28rem;">
-<div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+    style=" width:28rem;">
+  <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
     <form method="POST" class="align-items-center" action="/signin">
-  
         <div class="text-center">
         <h3 class="white-text mb-5 mt-4 font-weight-bold"><strong>SIGN</strong> 
         <a class="green-text font-weight-bold"><strong> IN</strong></a></h3>
       </div>
-
       <div class="md-group">
         <input name= "email" type="text" id="Form-email5" class="form-control white-text" placeholder="email@example.com">
         <label for="email">Email address</label>
       </div>
-      
       <div class="md-form pb-3">
           <input name="password" type="password" id="Form-pass5" class="form-control white-text" id="password" placeholder="Password">
           <label for="Form-pass5">Your password</label>
       </div>
-
       <div class="row d-flex align-items-center mb-4">
         <div class="col-auto my-1">
           <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">I am a</label>
@@ -29,19 +24,16 @@
             <option value="2">Shelter</option>
           </select>
       </div>
-      
       <div class="col-auto my-1">
         <button type="submit" class="btn btn-success btn-gradient peach btn-rounded z-depth-1">Log In!</button>
       </div>
     </form>
+  </div>
 </div>
-</div>
-      
 </section>
-
 {{#if errorMessage}}
   <div class="error">{{errorMessage}}</div>
-{{/if}} 
+{{/if}}
 
 
 

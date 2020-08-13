@@ -49,6 +49,7 @@ const dogSchema = new Schema({
     image: {
       type: String
     }
+    
  
   },
   {

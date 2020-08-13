@@ -20,14 +20,14 @@ router.get('/create', (req, res) => {
 
 router.post('/create', (req, res) => {
   let {
-    name, age, size, description, city, gender, goodwkids, goodwdogs, other
+    name, age, size, description, city, gender, goodwkids, goodwdogs, other, image
   } = req.body
   console.log(goodwdogs, goodwkids)
   goodwdogs === undefined ? goodwdogs = false : null
   goodwkids === undefined ? goodwkids = false : null
   console.log(goodwdogs, goodwkids)
   //console.log(req.body)
-  dogModel.create ({shelter: req.session.loggedInUser._id, name, age, size, description, city, gender, goodwkids, goodwdogs, other})
+  dogModel.create ({shelter: req.session.loggedInUser._id, name, age, size, description, city, gender, goodwkids, goodwdogs, other, image})
   .then ((dog) =>
     res.redirect(`/shelters/${req.session.loggedInUser._id}/dogs/${dog._id}`)
   )
@@ -42,7 +42,16 @@ router.get('/:dogId', (req, res) => {
   .populate('shelter')
   .then ((dog) => { 
     //console.log('Dog is', dog)
-    res.render ('dogprofile.hbs', {loggedInUser:req.session.loggedInUser, dog: dog})
+    let userData = req.session.loggedInUser;
+    console.log(userData)
+    if(userData.aboutUs){
+      userData.loginType = '2';
+    }
+        else{
+
+          userData.loginType = '1';
+        }
+    res.render ('dogprofile.hbs', {loggedInUser:userData, dog: dog})
   })
 })
  
@@ -55,7 +64,7 @@ router.get('/:dogId/edit', (req, res, next) => {
 })
 router.post('/:dogId/edit', (req, res, next) => {
   let {
-    name, age, size, description, city, gender, goodwkids, goodwdogs, other
+    name, age, size, description, city, gender, goodwkids, goodwdogs, other, image
   } = req.body
   console.log(req.body)
   goodwdogs === undefined ? goodwdogs = false : null
@@ -63,7 +72,7 @@ router.post('/:dogId/edit', (req, res, next) => {
   dogModel.findByIdAndUpdate(
     {_id: req.params.dogId},
     {
-      name, age, size, description, city, gender, goodwkids, goodwdogs, other
+      name, age, size, description, city, gender, goodwkids, goodwdogs, other, image
     }
   )
   .then(() => res.redirect(`/shelters/${req.session.loggedInUser._id}/dogs/${req.params.dogId}`) )
@@ -78,6 +87,17 @@ router.get('/:dogId/delete', (req, res, next) => {
   .then(() => res.redirect('/shelters'))
   .catch(() => res.redirect(`/shelters/${req.session.loggedInUser._id}/dogs/${req.params.dogId}/edit`))
 });
+
+//Adopt me
+
+router.get('/:dogId/adoptme', (req, res, next) => {
+  dogModel.findByIdAndDelete(
+    {_id: req.params.dogId}
+  )
+  .then(() => res.render('adoptme.hbs'))
+  .catch(() => res.redirect(`/shelters/${req.session.loggedInUser._id}/dogs/${req.params.dogId}/edit`))
+});
+
 
 // LIST OF DOGS FOR A PARTICULAR SHELTER
 router.get('/doglist', (req, res) => {
