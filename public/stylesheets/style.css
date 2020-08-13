@@ -6,6 +6,8 @@ body {
 
 footer { 
   background-color: white;
+  padding: 0;
+  padding-top: 0;
 }
 
 .img-fluid {
@@ -28,4 +30,17 @@ footer {
 
 form {
   margin-bottom: 200px;
+}
+
+.positiondivsign {
+  margin-left: 0;
+}
+
+.flex-section {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-section {
+  background-color: whitesmoke;
 }

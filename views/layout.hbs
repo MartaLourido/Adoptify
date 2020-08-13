@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     </head>
     <body>
-          <nav class="navbar navbar-expand-lg navbar-dark ">
+          <nav class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" href="#"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,27 +18,11 @@
               <ul class="navbar-nav mr-auto">   
               {{#unless loggedInUser}} 
               <li class="nav-item active" id="to-left">
-                <a class="nav-link" href="/signup">Sign up</a>
+                <a class="nav-link text-dark" href="/signup">Sign up</a>
               </li>
               <li class="nav-item active" id="to-left">
-                  <a class="nav-link" href="/signin">Sign in</a>
+                  <a class="nav-link text-dark" href="/signin">Sign in</a>
               </li>
-<<<<<<< HEAD
-            </ul>
-            {{/unless}}  
-            {{#if loggedInUser}} 
-              <form action='/signout' method='GET'>
-                <button class="btn btn-dark my-2 my-sm-0" type="submit">Sign out</button>
-              </form>
-            {{/if}}
-          </div>
-        </nav>
-      </div>
-    </div>
-
-    {{{body}}}
-    {{> footer}}
-=======
               {{/unless}}  
               {{#if loggedInUser}} 
               <li class="nav-item active" id="to-left">
@@ -73,7 +57,6 @@
 </footer>
 <!-- Footer -->
       
->>>>>>> origin/BRANCH_Marta
       
   </body>
 
