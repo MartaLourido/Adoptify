@@ -1,3 +1,5 @@
+<a href="/"><button id = "del-btn" class="btn btn-danger">Home</button></a>
+<a href="/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/edit"><button id = "del-btn" class="btn btn-danger">Go back</button></a>
 
 <div class="card" style="width: 18rem;">
   <img src={{dog.image}} style= "width: 18rem;" class="card-img-top" alt="...">
@@ -7,7 +9,6 @@
   </div>
 </div>
 
-<a href="/"><button id = "del-btn" class="btn btn-danger">Home</button></a>
 {{#ifCond loggedInUser.loginType '2'}}
 <a href="/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/edit"><button id = "del-btn" class="btn btn-danger">Edit</button></a> 
 <a href="/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/delete"><button id = "del-btn" class="btn btn-danger">Delete</button></a>
@@ -16,3 +17,5 @@
 {{#ifCond loggedInUser.loginType '1'}}
 <a href="/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/adoptme"><button id = "del-btn" class="btn btn-danger">Adopt me!</button></a> 
 {{/ifCond}}
+
+

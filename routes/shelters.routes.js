@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
   shelterModel.findById(req.session.loggedInUser._id)
     .then((user) => {
       req.session.loggedInUser = user
-      console.log(loggedInUser)
+      console.log()
       res.render('users/shelter.hbs', {loggedInUser: req.session.loggedInUser});
     })
   

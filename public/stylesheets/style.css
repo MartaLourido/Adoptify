@@ -31,3 +31,9 @@ footer {
 form {
   margin-bottom: 200px;
 }
+
+.profile-section {
+  background-color: whitesmoke;
+  border-radius: 15px 50px 30px 5px;
+  opacity: 0.8;
+} 
