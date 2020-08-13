@@ -1,48 +1,42 @@
 
-  <html lang="en" class="full-height">
-    <head>
+<html lang="en" class="full-height">
+  <head>
     <script src="/javascripts/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.js"  crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-    </head>
-    <body>
-      <div class='container-fluid'>
-        <div class='row'>
-          <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-            <a class="navbar-brand" href="#"><strong></strong></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>  
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">   
-              {{#unless loggedInUser}} 
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+  </head>
+    
+  <body>
+    <div class='container-fluid'>
+      <div class='row'>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {{#unless loggedInUser}} 
+            <ul class="navbar-nav mr-auto">   
               <li class="nav-item active" id="to-left">
                 <a class="nav-link" href="/signup">Sign up</a>
               </li>
               <li class="nav-item active" id="to-left">
-                <a class="nav-link" href="/signin">Sign in</a>
+                  <a class="nav-link" href="/signin">Sign in</a>
               </li>
             </ul>
             {{/unless}}  
             {{#if loggedInUser}} 
-            <form action='/signout' method='GET'>
-              <button class="btn btn-dark my-2 my-sm-0" type="submit">Sign out</button>
+              <form action='/signout' method='GET'>
+                <button class="btn btn-dark my-2 my-sm-0" type="submit">Sign out</button>
+              </form>
             {{/if}}
-            </form>
-            </div>
-          </nav>
-        </div>
+          </div>
+        </nav>
       </div>
+    </div>
 
-            {{{body}}}
-
-            {{> footer}}
+    {{{body}}}
+    {{> footer}}
       
-      
-    </body>
+  </body>
 
 </html>
     
