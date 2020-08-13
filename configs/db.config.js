@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/adoptify';
+const MONGODB_URI = process.env.MONGO_URI || 'mongodb://localhost/adoptify';
 
 mongoose
   .connect(MONGODB_URI, {
