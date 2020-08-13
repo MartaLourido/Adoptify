@@ -12,6 +12,9 @@ const cookieParser = require('cookie-parser');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
 
+// Partials
+hbs.registerPartials(__dirname + '/views/partials', function (err) {});
+
 
 // Set up the database
 require('./configs/db.config');
