@@ -43,4 +43,11 @@ form {
 
 .profile-section {
   background-color: whitesmoke;
+  border-radius: 0px 30px 30px 0px;
+  opacity: 0.8;
 }
+
+.divbuttonfinder {
+  margin: 40px;
+}
+  
