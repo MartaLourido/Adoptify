@@ -1,3 +1,5 @@
+
+
 <form method="POST" action='/shelters/{{loggedInUser._id}}/dogs/{{dog._id}}/edit'>
   <div class="form-group">
     <label for="formGroup1">Name</label>
@@ -15,7 +17,11 @@
     <label for="formGroup3">Description</label>
     <input name="description" type="text" class="form-control" id="formGroup3" placeholder="Write a description"  value = "{{dog.description}}">
   </div>
+<<<<<<< HEAD
   <div class="form-group">
+=======
+   <div class="form-group">
+>>>>>>> 18135df48ebbefd987b477ac6bafe93e7a7d7da4
     <label for="formGroup4">City</label>
     <input type="text" name="city" class="form-control" id="formGroup4" placeholder="Change your city" value = "{{dog.city}}">
   </div>
@@ -47,3 +53,4 @@
 {{#if errorMessage}}
   <div class="error">{{errorMessage}}</div>
 {{/if}} 
+
