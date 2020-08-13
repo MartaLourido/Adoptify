@@ -1,7 +1,11 @@
-<a href="/"><button id = "del-btn" class="btn btn-danger">Home</button></a>
-<a href="/adopters"><button id = "del-btn" class="btn btn-danger">Go back</button></a>  
+<div class= "divbuttonfinder">
+<a href="/"><button type="button" class="btn btn-warning btn-rounded">Home</button></a>  
+<a href="/adopters"><button type="button" class="btn btn-warning btn-rounded">Go back</button></a>
+</div>
 
-<form method="POST" action='/adopters/edit'>
+
+<div class="flex-section">
+<form class="editadopterform profile-section" method="POST" action='/adopters/edit'>
   <div class="form-group">
     <label for="formGroup1">Name</label>
     <input type="text" class="form-control" id="formGroup1" placeholder="Name" value = "{{adopter.name}}">
@@ -26,8 +30,9 @@
     <label for="formGroup7">Other</label>
     <input type="text" name="other" class="form-control" id="formGroup7" placeholder="Add more information" value = "{{adopter.other}}">
   </div>
-<button id = "del-btn" class="btn btn-danger">Submit</button>
+<button id = "del-btn" type="button" class="btn btn-warning btn-rounded">Submit</button>
 </form>
+</div>
 {{#if errorMessage}}
   <div class="error">{{errorMessage}}</div>
 {{/if}} 

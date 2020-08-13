@@ -68,8 +68,7 @@ router.post('/find-dogadopter', (req, res) => {
     filter
     )
   .then ((result) => {
-  
-    res.render('find-dogadopter.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES,Size:SIZE, dogs: result});
+  res.render('find-dogadopter.hbs', {loggedInUser:req.session.loggedInUser, CITIES:CITIES, Size:SIZE, dogs: result});
   })
 })
 

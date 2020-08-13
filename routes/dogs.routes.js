@@ -107,10 +107,5 @@ router.get('/doglist', (req, res) => {
 })
 })
 
-//see the dog button 
-
-// router.get('/petprofile/viewprofile/:dogId', (req, res) => {
-//   res.redirect('/:dogId)
-// });
 
 module.exports = router;
