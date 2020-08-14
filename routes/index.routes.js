@@ -8,6 +8,6 @@ const shelterModel = require("../models/shelter.model");
 const adopterModel = require("../models/adopter.model");
 
 // INDEX GET ROUTE
-router.get('/', (req, res) => res.render('index', { title: 'Welcome to Adoptify🐶' }));
+router.get('/', (req, res) => res.render('index', { title: 'Welcome to Adoptify' }));
 
 module.exports = router;
