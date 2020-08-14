@@ -17,7 +17,6 @@ router.get('/', (req, res) => {
   shelterModel.findById(req.session.loggedInUser._id)
     .then((user) => {
       req.session.loggedInUser = user
-      console.log()
       res.render('users/shelter.hbs', {loggedInUser: req.session.loggedInUser});
     })
   
@@ -33,7 +32,7 @@ router.post("/edit", (req, res) => {
   let shelterData = req.session.loggedInUser
 
   console.log(req.body)
-  shelterModel.findByIdAndUpdate( shelterData._id, {$set: req.body})
+  shelterModel.findByIdAndUpdate(shelterData._id, {$set: req.body})
     .then(() => {
       res.redirect('/shelters')    
       })

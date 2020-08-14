@@ -20,7 +20,6 @@ const dogSchema = new Schema({
     },
     description: {
       type: String, 
-      required: true
     },
     size: {
       type: String,
@@ -29,7 +28,6 @@ const dogSchema = new Schema({
     },
     breed: {
       type: String,
-      
     },
     other: {
       type: String,

@@ -1,37 +1,45 @@
 
-<h2 class="color-blue">Edit a Shelter profile</h2>
+<div class= "divbuttonfinder">
+  <a href="/"><button type="button" class="btn btn-warning btn-rounded">Home</button></a>  
+  <a href="/shelters"><button type="button" class="btn btn-warning btn-rounded">Go back</button></a>
+</div>
 
-<form action="/shelters/edit" method="POST">
-  <div class="form-group">
-    <label for="formGroup1">username</label>
-    <input type="text" class="form-control" id="formGroup1" placeholder="username" value = "{{shelter.username}}">
-  </div>
-  <div class="form-group">
-    <label for="formGroup2">Email</label>
-    <input type="text" class="form-control" id="formGroup2" placeholder="Change your email" value = "{{shelter.email}}">
-  </div>
-   <div class="form-group">
-    <label for="formGroup1">name</label>
-    <input type="text" class="form-control" id="formGroup1" placeholder="write your name here" value = "{{shelter.name}}">
-  </div>
-  <div class="form-group">
-    <label for="formGroup4">City</label>
-    <input type="text" name="city" class="form-control" id="formGroup4" placeholder="Add more information" value = "{{shelter.city}}">
-  </div>
-   <div class="form-group">
-    <label for="formGroup4">About us</label>
-    <input type="text" name="aboutUs" class="form-control" id="formGroup4" placeholder="Add more information about you!" value = "{{shelter.aboutUs}}">
-  </div>
-   <div class="form-group">
-    <label for="formGroup6">Contact person</label>
-    <input type="text" name="contactPerson" class="form-control" id="formGroup6" placeholder="Add the contact information" value = "{{shelter.contactPerson}}">
-  </div>
-   <div class="form-group">
-    <label for="formGroup7">Address</label>
-    <input type="text" name="address" class="form-control" id="formGroup7" placeholder="Add your address" value = "{{shelter.address}}">
-  </div>
-<button id = "del-btn" class="btn btn-danger">Submit</button>
-</form>
+<div class="flex-section profile-section">
+
+  <form action="/shelters/edit" method="POST">
+    <div class="form-group">
+      <label for="formGroup1">Username</label>
+      <input type="text" class="form-control" id="formGroup1" placeholder="username" value = "{{shelter.username}}">
+    </div>
+
+    <div class="form-group">
+      <label for="formGroup2">Email</label>
+      <input type="text" class="form-control" id="formGroup2" placeholder="Change your email" value = "{{shelter.email}}">
+    </div>
+    <div class="form-group">
+      <label for="formGroup1">Name</label>
+      <input type="text" class="form-control" id="formGroup1" placeholder="write your name here" value = "{{shelter.name}}">
+    </div>
+    <div class="form-group">
+      <label for="formGroup4">City</label>
+      <input type="text" name="city" class="form-control" id="formGroup4" placeholder="Add more information" value = "{{shelter.city}}">
+    </div>
+    <div class="form-group">
+      <label for="formGroup4">About us</label>
+      <input type="text" name="aboutUs" class="form-control" id="formGroup4" placeholder="Add more information about you!" value = "{{shelter.aboutUs}}">
+    </div>
+    <div class="form-group">
+      <label for="formGroup6">Contact person</label>
+      <input type="text" name="contactPerson" class="form-control" id="formGroup6" placeholder="Add the contact information" value = "{{shelter.contactPerson}}">
+    </div>
+    <div class="form-group">
+      <label for="formGroup7">Address</label>
+      <input type="text" name="address" class="form-control" id="formGroup7" placeholder="Add your address" value = "{{shelter.address}}">
+    </div>
+  <button id = "del-btn" type="submit" class="btn btn-warning btn-rounded">Submit</button>
+  </form>
+</div>
+
 {{#if errorMessage}}
   <div class="error">{{errorMessage}}</div>
 {{/if}} 

@@ -1,37 +1,62 @@
 <a href="/"><button id = "del-btn" class="btn btn-danger">Home</button></a>
 <a href="/shelters"><button id = "del-btn" class="btn btn-danger">Go back<button></a>  
 
-<h1>Search for a sheltered dog!</h1>
-    <form method="post" action="/adopters/find-dogadopter" class="form-inline my-2 my-lg-0">
-      <label for="city">Cities</label>
-      <select class="form-control" name= "city"> 
-      {{#each  CITIES}}
-      <option value="{{this}}">{{this}}</option>
-      {{/each}}
-      </select>
-      <label for="size">Size</label>
-      <select class="form-control" name= "size"> 
-      {{#each  Size}}
-      <option value="{{this}}">{{this}}</option>
-      {{/each}}
-      </select>
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-
-{{#each dogs}}
-<div class="card" style="width: 18rem;">
-  <img src={{this.image}} style= "width: 18rem;" class="card-img-top" alt="...">
-  <div class="card-body">
-     <h5 class="card-title">{{this.name}}</h5>
-       <p class="card-text">{{this.description}}</p>
-     <a href="/shelters/dogs/{{this._id}}" class="btn btn-primary">See this dog!</a>
-  </div>
+<div class= "divbuttonfinder">
+  <a href="/"><button type="button" class="btn btn-warning btn-rounded">Home</button></a>  
+  <a href="/adopters"><button type="button" class="btn btn-warning btn-rounded">Go back</button></a>
 </div>
-{{/each}}
+
+<div class="text-center">
+    <h1>Your dog is waiting for you!</h1>
+</div>
+
+<div class="profile-section">
+  <form method="post" action="/adopters/find-dogadopter" class="flex-section form-inline my-2 my-lg-0">
+    <label for="city">Cities</label>
+    
+    <select class="form-control" name= "city"> 
+      {{#each  CITIES}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+        
+    <label for="size">Size</label>
+        
+    <select class="form-control" name= "size"> 
+    {{#each  Size}}
+    <option value="{{this}}">{{this}}</option>
+    {{/each}}
+    </select>
+        
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-warning btn-rounded" type="submit">Search</button>
+
+  </form>
+  
+ 
+
+<div class="cardcontainer card-columns">  
+      
+  {{#each dogs}}
+    
+    
+      <div class="card">
+        <img src={{this.image}} class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{this.name}}</h5>
+          <p class="card-text">{{this.description}}</p>
+          <a href="/shelters/{{this.shelter}}/dogs/{{this._id}}"type="button" class="btn btn-warning btn-rounded">See this dog!</a>
+        </div>
+      </div>
+    
+
+  {{/each}}
+
+</div>
 
 {{#if errorMessage}}
   <div class="error">{{errorMessage}}</div>
-{{/if}}
+{{/if}} 
+
+
+

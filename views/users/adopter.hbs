@@ -1,35 +1,37 @@
-
 <div class="container">
-    <div class="row my-2">
-        <div class="col-lg-8 order-lg-2">
-              <h1>{{loggedInUser.name}} Profile</h1>
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                   <a href="/"><button id = "del-btn" class="btn btn-danger">Home</button></a>
-                </li>
-                <li class="nav-item">
-                    <a href="/adopters/find-dogadopter"><button id = "del-btn" class="btn btn-danger">Find dogs</button></a>
-                </li>
-                <li class="nav-item">
-                    <a href="/adopters/edit"><button id = "del-btn" class="btn btn-danger">Edit</button></a> 
-                </li>
-                  <li class="nav-item">
-                   
-                    <a href="/adopters/{{adopter._id}}/delete"><button id = "del-btn" class="btn btn-danger">Delete</button></a>
-                </li>  <li class="nav-item">
-            </ul>
-        <div class="profile-section tab-content py-4">
-              <div class="tab-pane active" id="profile">
-                  <h5 class="mb-3">Your information</h5>
+  <div class="row my-2">
+    <div class="col-lg-8 order-lg-22">
+        <h1>{{loggedInUser.name}} Profile</h1>
+        
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a href="/"><button id = "del-btn" type="button" class="btn btn-warning btn-rounded">Home</button></a>
+          </li>
+                
+          <li class="nav-item">
+            <a href="/adopters/find-dogadopter"><button id = "del-btn" type="button" class="btn btn-warning btn-rounded">Find dogs</button></a>
+          </li>
+                
+          <li class="nav-item">
+            <a href="/adopters/edit"><button id = "del-btn" type="button" class="btn btn-warning btn-rounded">Edit</button></a>
+          </li>
 
-                    <p>Username: {{adopter.username}}</p>
-                    <p>Name: {{adopter.name}}</p>
-                    <p>City: {{adopter.city}}</p>
-                    <p>Email: {{adopter.email}}</p>
-                    <p>About me: {{adopter.aboutMe}} </p>
-                    <p>Volunteer: {{adopter.volunteer}}</p>
-                    <p>Other: {{adopter.other}} </p>
+          <li class="nav-item">
+            <a href="/adopters/{{adopter._id}}/delete"><button id = "del-btn" type="button" class="btn btn-warning btn-rounded">Delete</button></a>
+          </li>  <li class="nav-item">
+        </ul>
 
+      <div class="profile-section tab-content py-4">
+        <div class="tab-pane active text-center" id="profile">
+            <h5 class="mb-3">Your information</h5>
+              <p>Username: {{adopter.username}}</p>
+              <p>Name: {{adopter.name}}</p>
+              <p>City: {{adopter.city}}</p>
+              <p>Email: {{adopter.email}}</p>
+              <p>About me: {{adopter.aboutMe}} </p>
+              <p>Volunteer: {{adopter.volunteer}}</p>
+              <p>Other: {{adopter.other}} </p>
+          
           </div>
         </div>
         </div>

@@ -3,7 +3,6 @@
 <a href="/adopters"><button type="button" class="btn btn-warning btn-rounded">Go back</button></a>
 </div>
 
-<form method="POST" action='/adopters/edit'>
 <div class="flex-section">
 <form class="editadopterform profile-section" method="POST" action='/adopters/edit'>
   <div class="form-group">
@@ -30,7 +29,7 @@
     <label for="formGroup7">Other</label>
     <input type="text" name="other" class="form-control" id="formGroup7" placeholder="Add more information" value = "{{adopter.other}}">
   </div>
-<button id = "del-btn" type="button" class="btn btn-warning btn-rounded">Submit</button>
+<button id = "del-btn" type="submit" class="btn btn-warning btn-rounded">Submit</button>
 </form>
 </div>
 {{#if errorMessage}}

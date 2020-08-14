@@ -42,6 +42,11 @@ form {
   
 }
 
+.finderposition {
+  display: flex;
+  justify-content: space-between;
+}
+
 .profile-section {
   background-color: whitesmoke;
   border-radius: 0px 30px 30px 0px;
@@ -66,4 +71,11 @@ form {
 .marginfortheindex{
   margin-right: 40px;
   color: #3c1d12;
+}
+.findercard {
+  width: 200px;
+}
+
+.cardcontainer {
+  flex-wrap: wrap;
 }
