@@ -41,16 +41,15 @@ router.get('/:dogId', (req, res) => {
   dogModel.findById(req.params.dogId) 
   .populate('shelter')
   .then((dog) => { 
-    //console.log('Dog is', dog)
-    res.render ('dogprofile.hbs', {loggedInUser:req.session.loggedInUser, dog: dog})
+    console.log('Dog is', dog)
+    //res.render ('dogprofile.hbs', {loggedInUser:req.session.loggedInUser, dog: dog})
     let userData = req.session.loggedInUser;
     console.log(userData)
     if(userData.aboutUs){
       userData.loginType = '2';
+    } else{
+      userData.loginType = '1';
     }
-        else{
-          userData.loginType = '1';
-        }
     res.render ('dogprofile.hbs', {loggedInUser:userData, dog: dog})
   })
   .catch((err) => {
@@ -95,10 +94,14 @@ router.get('/:dogId/delete', (req, res, next) => {
 //Adopt me
 
 router.get('/:dogId/adoptme', (req, res, next) => {
-  dogModel.findByIdAndDelete(
+  dogModel.findById(
     {_id: req.params.dogId}
   )
-  .then(() => res.render('adoptme.hbs'))
+  .populate("shelter")
+  .then((dog) => {
+    console.log(dog)
+    res.render('adoptme.hbs', { shelter: dog.shelter })
+  })  
   .catch(() => res.redirect(`/shelters/${req.session.loggedInUser._id}/dogs/${req.params.dogId}/edit`))
 });
 

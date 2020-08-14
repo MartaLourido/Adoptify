@@ -51,6 +51,7 @@ form {
   background-color: whitesmoke;
   border-radius: 0px 30px 30px 0px;
   opacity: 0.8;
+  margin-bottom: 100px;
 }
 
 .divbuttonfinder {
@@ -78,4 +79,5 @@ form {
 
 .cardcontainer {
   flex-wrap: wrap;
+  margin-bottom: 100px;
 }
