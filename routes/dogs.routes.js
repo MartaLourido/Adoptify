@@ -40,20 +40,24 @@ router.post('/create', (req, res) => {
 router.get('/:dogId', (req, res) => {
   dogModel.findById(req.params.dogId) 
   .populate('shelter')
-  .then ((dog) => { 
+  .then((dog) => { 
     //console.log('Dog is', dog)
+    res.render ('dogprofile.hbs', {loggedInUser:req.session.loggedInUser, dog: dog})
     let userData = req.session.loggedInUser;
     console.log(userData)
     if(userData.aboutUs){
       userData.loginType = '2';
     }
         else{
-
           userData.loginType = '1';
         }
     res.render ('dogprofile.hbs', {loggedInUser:userData, dog: dog})
   })
+  .catch((err) => {
+    console.log('Error ', err)
+  })
 })
+
  
 // EDIT 
 router.get('/:dogId/edit', (req, res, next) => {

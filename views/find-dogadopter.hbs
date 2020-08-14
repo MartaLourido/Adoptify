@@ -1,21 +1,21 @@
 
 <div class= "divbuttonfinder">
-<a href="/"><button type="button" class="btn btn-warning btn-rounded">Home</button></a>  
-<a href="/adopters"><button type="button" class="btn btn-warning btn-rounded">Go back</button></a>
+  <a href="/"><button type="button" class="btn btn-warning btn-rounded">Home</button></a>  
+  <a href="/adopters"><button type="button" class="btn btn-warning btn-rounded">Go back</button></a>
 </div>
 
 <div class="text-center">
     <h1>Your dog is waiting for you!</h1>
-  </div>
+</div>
 
 <div class="profile-section">
   <form method="post" action="/adopters/find-dogadopter" class="flex-section form-inline my-2 my-lg-0">
     <label for="city">Cities</label>
     
     <select class="form-control" name= "city"> 
-    {{#each  CITIES}}
-    <option value="{{this}}">{{this}}</option>
-    {{/each}}
+      {{#each  CITIES}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
     </select>
         
     <label for="size">Size</label>
@@ -31,28 +31,30 @@
 
   </form>
   
+ 
 
-    <main class="container-fluid">
+<div class="cardcontainer card-columns">  
       
+  {{#each dogs}}
     
-
-      {{#each dogs}}
-      
-        <div class="card" style="width: 30rem;">
-          <img src={{this.image}} style= "width: 30rem;" class="card-img-top" alt="...">
-          
-          <div class="card-body">
-            <h5 class="card-title">{{this.name}}</h5>
-            <p class="card-text">{{this.description}}</p>
-            <a href="/shelters/{{this.shelter}}/dogs/{{this._id}}"type="button" class="btn btn-warning btn-rounded">See this dog!</a>
-          </div>
-
+    
+      <div class="card">
+        <img src={{this.image}} class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{this.name}}</h5>
+          <p class="card-text">{{this.description}}</p>
+          <a href="/shelters/{{this.shelter}}/dogs/{{this._id}}"type="button" class="btn btn-warning btn-rounded">See this dog!</a>
         </div>
-      
-        {{/each}}
-
+      </div>
     
-    </main>
-  
+
+  {{/each}}
 
 </div>
+
+{{#if errorMessage}}
+  <div class="error">{{errorMessage}}</div>
+{{/if}} 
+
+
+

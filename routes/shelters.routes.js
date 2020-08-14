@@ -32,7 +32,7 @@ router.post("/edit", (req, res) => {
   let shelterData = req.session.loggedInUser
 
   console.log(req.body)
-  shelterModel.findByIdAndUpdate( shelterData._id, {$set: req.body})
+  shelterModel.findByIdAndUpdate(shelterData._id, {$set: req.body})
     .then(() => {
       res.redirect('/shelters')    
       })

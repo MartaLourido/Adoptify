@@ -12,9 +12,6 @@ const cookieParser = require('cookie-parser');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
 
-// Partials
-hbs.registerPartials(__dirname + '/views/partials', function (err) {});
-
 //configuracion de if condicional para dos variables utilizado en dogprofile
 hbs.registerHelper('ifCond', function(v1, v2, options) {
   if(v1 === v2) {
@@ -23,6 +20,8 @@ hbs.registerHelper('ifCond', function(v1, v2, options) {
   return options.inverse(this);
 });
 
+// Partials
+hbs.registerPartials(__dirname + '/views/partials', function (err) {});
 
 // Set up the database
 require('./configs/db.config');
